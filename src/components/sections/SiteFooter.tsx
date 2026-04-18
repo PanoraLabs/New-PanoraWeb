@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/link"
 
 const columns = [
   {
@@ -18,7 +18,7 @@ const columns = [
     title: "Legal",
     links: ["Terms of Service", "Privacy Policy", "Risk Disclosure", "Whitepaper"],
   },
-] as const;
+] as const
 
 export function SiteFooter() {
   return (
@@ -45,13 +45,11 @@ export function SiteFooter() {
         ))}
       </div>
       <div className="footer-bottom">
-        <span className="footer-copy">
-          © 2026 Panora Labs. All rights reserved.
-        </span>
+        <span className="footer-copy">© 2026 Panora Labs. All rights reserved.</span>
         <span className="footer-built">
           Built by <span>Prasetio Wibowo</span>
         </span>
       </div>
     </footer>
-  );
+  )
 }

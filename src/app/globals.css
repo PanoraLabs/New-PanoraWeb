@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *,
 *::before,
 *::after {
@@ -7,6 +11,7 @@
 }
 
 :root {
+  /* ── Project palette ── */
   --forest: #0d2b1a;
   --moss: #1a5c38;
   --leaf: #2e8b57;
@@ -19,6 +24,28 @@
   --white: #ffffff;
   --serif: var(--font-instrument-serif), Georgia, serif;
   --sans: var(--font-dm-sans), system-ui, sans-serif;
+
+  /* ── shadcn semantic tokens (mapped to project palette) ── */
+  --background: #f7f4ee;
+  --foreground: #0f1810;
+  --card: #ffffff;
+  --card-foreground: #0f1810;
+  --popover: #ffffff;
+  --popover-foreground: #0f1810;
+  --primary: #0d2b1a;
+  --primary-foreground: #ffffff;
+  --secondary: #e8f5e9;
+  --secondary-foreground: #0d2b1a;
+  --muted: #e8f5e9;
+  --muted-foreground: #6b7b6e;
+  --accent: #e8f5e9;
+  --accent-foreground: #1a5c38;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(13, 43, 26, 0.1);
+  --input: rgba(13, 43, 26, 0.1);
+  --ring: #2e8b57;
+  --radius: 0.5rem;
 }
 
 html {
@@ -46,7 +73,6 @@ nav {
   background: rgba(247, 244, 238, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(13, 43, 26, 0.08);
-  animation: fadeDown 0.8s ease both;
 }
 
 .nav-logo {
@@ -98,27 +124,6 @@ nav {
   color: var(--ink);
 }
 
-.nav-cta {
-  background: var(--moss);
-  color: var(--white);
-  border: none;
-  padding: 10px 24px;
-  border-radius: 100px;
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition:
-    background 0.2s,
-    transform 0.15s;
-  text-decoration: none;
-}
-
-.nav-cta:hover {
-  background: var(--forest);
-  transform: translateY(-1px);
-}
-
 /* ── HERO ── */
 #hero {
   min-height: 100vh;
@@ -158,27 +163,12 @@ nav {
   z-index: 1;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--mist);
-  border: 1px solid rgba(46, 139, 87, 0.3);
-  border-radius: 100px;
-  padding: 6px 16px 6px 8px;
-  font-size: 13px;
-  color: var(--moss);
-  font-weight: 500;
-  margin-bottom: 32px;
-  animation: fadeUp 0.9s 0.1s ease both;
-}
-
 .hero-badge-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--sprout);
-  animation: pulse 2s infinite;
+  flex-shrink: 0;
 }
 
 .hero-title {
@@ -188,7 +178,6 @@ nav {
   letter-spacing: -0.03em;
   color: var(--forest);
   margin-bottom: 24px;
-  animation: fadeUp 0.9s 0.2s ease both;
 }
 
 .hero-title em {
@@ -203,61 +192,17 @@ nav {
   max-width: 480px;
   margin-bottom: 48px;
   font-weight: 300;
-  animation: fadeUp 0.9s 0.3s ease both;
 }
 
 .hero-actions {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  animation: fadeUp 0.9s 0.4s ease both;
-}
-
-.btn-primary {
-  background: var(--forest);
-  color: var(--white);
-  border: none;
-  padding: 14px 32px;
-  border-radius: 100px;
-  font-family: var(--sans);
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.btn-primary:hover {
-  background: var(--moss);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(13, 43, 26, 0.2);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--forest);
-  border: 1.5px solid rgba(13, 43, 26, 0.3);
-  padding: 14px 32px;
-  border-radius: 100px;
-  font-family: var(--sans);
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.btn-outline:hover {
-  border-color: var(--forest);
-  background: rgba(13, 43, 26, 0.04);
 }
 
 .hero-visual {
   position: relative;
   z-index: 1;
-  animation: fadeUp 0.9s 0.4s ease both;
 }
 
 .hero-card-stack {
@@ -381,8 +326,6 @@ nav {
   height: 100%;
   border-radius: 100px;
   background: linear-gradient(90deg, var(--leaf), var(--sprout));
-  width: 72%;
-  animation: growBar 1.5s 1.2s ease both;
 }
 
 .vc-avatars {
@@ -430,19 +373,16 @@ nav {
   border-radius: 14px;
   padding: 12px 16px;
   box-shadow: 0 8px 24px rgba(13, 43, 26, 0.12);
-  animation: floatY 4s ease-in-out infinite;
 }
 
 .fb-top {
   top: -16px;
   left: -20px;
-  animation-delay: 0s;
 }
 
 .fb-bot {
   bottom: 20px;
   right: -20px;
-  animation-delay: 2s;
 }
 
 .fb-label {
@@ -648,21 +588,6 @@ nav {
   z-index: 1;
 }
 
-.vault-item {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 32px;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-
-.vault-item:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-4px);
-}
-
 .vault-icon {
   width: 48px;
   height: 48px;
@@ -738,14 +663,6 @@ nav {
   margin: 0 auto;
 }
 
-.market-visual {
-  background: var(--white);
-  border: 1px solid rgba(13, 43, 26, 0.1);
-  border-radius: 24px;
-  padding: 32px;
-  box-shadow: 0 8px 40px rgba(13, 43, 26, 0.06);
-}
-
 .market-header {
   display: flex;
   justify-content: space-between;
@@ -759,20 +676,12 @@ nav {
   color: var(--forest);
 }
 
-.mh-live {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: var(--sprout);
-}
-
 .mh-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--sprout);
-  animation: pulse 2s infinite;
+  flex-shrink: 0;
 }
 
 .market-list {
@@ -838,30 +747,6 @@ nav {
   color: var(--sprout);
 }
 
-.mr-down {
-  font-size: 12px;
-  color: #d0552a;
-}
-
-.market-btn {
-  width: 100%;
-  margin-top: 20px;
-  background: var(--moss);
-  color: var(--white);
-  border: none;
-  padding: 12px;
-  border-radius: 12px;
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.market-btn:hover {
-  background: var(--forest);
-}
-
 /* ── PROOF / TRUST ── */
 #proof {
   background: var(--mist);
@@ -891,7 +776,7 @@ nav {
   opacity: 1;
 }
 
-/* ── SPLIT / CTA ── */
+/* ── SPLIT / ECONOMICS ── */
 #split {
   padding: 120px 60px;
   display: grid;
@@ -913,23 +798,6 @@ nav {
   width: 100%;
   height: 100%;
   transform: rotate(-90deg);
-}
-
-.donut-arc {
-  opacity: 0;
-  animation: donutFadeIn 0.8s ease forwards;
-}
-
-.donut-arc--1 {
-  animation-delay: 0.35s;
-}
-
-.donut-arc--2 {
-  animation-delay: 0.55s;
-}
-
-.donut-arc--3 {
-  animation-delay: 0.75s;
 }
 
 .donut-center {
@@ -1059,80 +927,7 @@ footer {
   color: var(--sprout);
 }
 
-/* ── ANIMATIONS ── */
-@keyframes fadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(-16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes floatY {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
-@keyframes growBar {
-  from {
-    width: 0;
-  }
-  to {
-    width: 72%;
-  }
-}
-
-@keyframes donutFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+/* ── UTILITY CLASSES ── */
 .vaults-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -1208,6 +1003,7 @@ footer {
   display: inline-block;
 }
 
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   nav {
     padding: 16px 24px;

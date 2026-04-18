@@ -1,3 +1,7 @@
+"use client"
+
+import { motion } from "framer-motion"
+
 const stats = [
   {
     num: (
@@ -6,38 +10,37 @@ const stats = [
       </>
     ),
     label: "Total Value Locked",
-    delay: undefined,
   },
   {
     num: <span>340+</span>,
     label: "Active Farmers Onboarded",
-    delay: "0.1s",
   },
   {
     num: <span>12</span>,
     label: "Vaults Completed",
-    delay: "0.2s",
   },
   {
     num: <span>0</span>,
     label: "Rug Pulls (ever)",
-    delay: "0.3s",
   },
-] as const;
+] as const
 
 export function StatsBar() {
   return (
     <section id="stats">
-      {stats.map(({ num, label, delay }) => (
-        <div
+      {stats.map(({ num, label }, i) => (
+        <motion.div
           key={label}
-          className="stat-item reveal"
-          style={delay ? { transitionDelay: delay } : undefined}
+          className="stat-item"
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.12 }}
+          transition={{ delay: i * 0.1, duration: 0.7, ease: "easeOut" as const }}
         >
           <div className="stat-num">{num}</div>
           <div className="stat-label">{label}</div>
-        </div>
+        </motion.div>
       ))}
     </section>
-  );
+  )
 }

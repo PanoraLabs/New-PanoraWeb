@@ -1,15 +1,23 @@
-import Link from "next/link";
+"use client"
+
+import Link from "next/link"
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
 
 const navItems = [
   { href: "#how", label: "How It Works" },
   { href: "#vaults", label: "Vaults" },
   { href: "#market", label: "Secondary Market" },
   { href: "#split", label: "Economics" },
-] as const;
+] as const
 
 export function Nav() {
   return (
-    <nav>
+    <motion.nav
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" as const }}
+    >
       <Link href="/" className="nav-logo">
         <div className="nav-logo-mark">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -25,6 +33,7 @@ export function Nav() {
         </div>
         <span className="nav-logo-text">Panora Labs</span>
       </Link>
+
       <ul className="nav-links">
         {navItems.map(({ href, label }) => (
           <li key={href}>
@@ -32,9 +41,10 @@ export function Nav() {
           </li>
         ))}
       </ul>
-      <Link href="#vaults" className="nav-cta">
-        Explore Vaults
-      </Link>
-    </nav>
-  );
+
+      <Button variant="nav" size="nav" asChild>
+        <Link href="#vaults">Explore Vaults</Link>
+      </Button>
+    </motion.nav>
+  )
 }

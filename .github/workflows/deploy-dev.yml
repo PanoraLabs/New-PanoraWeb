@@ -41,4 +41,7 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Assign dev alias
-        run: vercel alias set ${{ steps.deploy.outputs.url }} ${{ secrets.DEV_ALIAS }} --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }}
+        run: vercel alias set ${{ steps.deploy.outputs.url }} ${{ secrets.DEV_ALIAS }} --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

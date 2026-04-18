@@ -22,7 +22,7 @@ const badgeVariants = cva(
           "text-primary underline-offset-4 hover:underline text-xs",
         // ── Custom project variants ──
         hero:
-          "gap-2 bg-mist border border-leaf/30 rounded-full py-[6px] pl-2 pr-4 text-[13px] text-moss",
+          "gap-2 bg-white/10 border border-white/20 backdrop-blur-sm rounded-full py-[6px] pl-2 pr-4 text-[13px] text-white/80",
         vault:
           "gap-1.5 bg-mist rounded-full px-3 py-1 text-[12px] text-moss",
         live:

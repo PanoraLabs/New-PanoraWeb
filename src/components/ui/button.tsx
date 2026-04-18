@@ -28,6 +28,10 @@ const buttonVariants = cva(
           "bg-moss text-white rounded-xl hover:bg-forest",
         nav:
           "bg-moss text-white rounded-full hover:bg-forest hover:-translate-y-px",
+        "hero-cta":
+          "bg-sprout text-forest rounded-full hover:bg-[#4dab6a] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(93,187,122,0.35)] font-semibold",
+        "hero-ghost":
+          "bg-transparent text-white/80 border border-white/25 rounded-full hover:border-white/60 hover:text-white hover:bg-white/8",
       },
       size: {
         // Standard shadcn sizes

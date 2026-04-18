@@ -1,7 +1,9 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 
 const navItems = [
@@ -12,26 +14,31 @@ const navItems = [
 ] as const
 
 export function Nav() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.85)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" as const }}
+      className={scrolled ? "nav-scrolled" : "nav-hero"}
     >
       <Link href="/" className="nav-logo">
-        <div className="nav-logo-mark">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C12 2 4 8 4 14a8 8 0 0016 0C20 8 12 2 12 2z" />
-            <path
-              d="M12 10v8M8 14l4-4 4 4"
-              fill="none"
-              stroke="rgba(255,255,255,0.6)"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-        <span className="nav-logo-text">Panora Labs</span>
+        <Image
+          src="/logo.png"
+          alt="Panora Labs"
+          width={1456}
+          height={816}
+          style={{ height: "50px", width: "auto" }}
+          priority
+        />
       </Link>
 
       <ul className="nav-links">

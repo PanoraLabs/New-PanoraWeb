@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -14,11 +15,20 @@ const fadeUp = (delay: number) => ({
 export function Hero() {
   return (
     <section id="hero">
-      <div className="hero-bg" />
-      <div className="hero-grid" />
+      {/* Background image */}
+      <Image
+        src="/hero.jpg"
+        alt=""
+        fill
+        priority
+        className="hero-bg-photo"
+        style={{ objectFit: "cover", objectPosition: "center" }}
+      />
+      <div className="hero-overlay" />
 
-      <div className="hero-left">
-        <motion.div {...fadeUp(0.1)} className="mb-8">
+      {/* Bottom-left: main content */}
+      <div className="hero-content">
+        <motion.div {...fadeUp(0.1)} className="mb-6">
           <Badge variant="hero">
             <motion.span
               className="hero-badge-dot"
@@ -44,86 +54,28 @@ export function Hero() {
         </motion.p>
 
         <motion.div className="hero-actions" {...fadeUp(0.4)}>
-          <Button variant="primary" asChild>
+          <Button variant="hero-cta" asChild>
             <Link href="#vaults">Start Investing →</Link>
           </Button>
-          <Button variant="outline" asChild>
+          <Button variant="hero-ghost" asChild>
             <Link href="#how">See How It Works</Link>
           </Button>
         </motion.div>
       </div>
 
-      <motion.div className="hero-visual" {...fadeUp(0.4)}>
-        <div className="hero-card-stack">
-          <div className="vault-card vc-far" />
-          <div className="vault-card vc-behind" />
-          <div className="vault-card vc-main">
-            <motion.div
-              className="float-badge fb-top"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <div className="fb-label">Season Yield</div>
-              <div className="fb-val">
-                +18.4% <span className="fb-green">↑</span>
-              </div>
-            </motion.div>
-
-            <div className="vc-tag">
-              <span className="vc-tag-dot" />
-              Active Vault
-            </div>
-            <div className="vc-title">CHILI-GH-SUBANG-Q2</div>
-            <div className="vc-sub">Red Chili · Greenhouse · West Java</div>
-
-            <div className="vc-stats">
-              <div className="vc-stat">
-                <div className="vc-stat-label">Funded</div>
-                <div className="vc-stat-val">Rp 2.4B</div>
-              </div>
-              <div className="vc-stat">
-                <div className="vc-stat-label">Duration</div>
-                <div className="vc-stat-val">
-                  90 <span>days</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="vc-progress-label">
-              <span>Growth Progress</span>
-              <span style={{ fontWeight: 500, color: "var(--forest)" }}>
-                Day 65 / 90
-              </span>
-            </div>
-            <div className="vc-bar-bg">
-              <motion.div
-                className="vc-bar-fill"
-                initial={{ width: 0 }}
-                animate={{ width: "72%" }}
-                transition={{ delay: 1.2, duration: 1.5, ease: "easeOut" as const }}
-              />
-            </div>
-
-            <div className="vc-avatars">
-              <div className="vc-av">AW</div>
-              <div className="vc-av" style={{ background: "var(--gold)" }}>BR</div>
-              <div className="vc-av" style={{ background: "var(--leaf)" }}>PT</div>
-              <div className="vc-av vc-av-more">+24</div>
-              <span className="vc-av-label">investors staked</span>
-            </div>
-
-            <motion.div
-              className="float-badge fb-bot"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, delay: 2, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <div className="fb-label">IoT Status</div>
-              <div className="fb-val" style={{ fontSize: 14, color: "var(--sprout)" }}>
-                🌡 28°C · 82% RH
-              </div>
-            </motion.div>
-          </div>
+      {/* Bottom-right: glass mission card */}
+      <motion.div className="hero-mission-card" {...fadeUp(0.55)}>
+        <div className="hmc-header">
+          <span className="hmc-dot" />
+          <span className="hmc-title">Our Mission</span>
         </div>
+        <p className="hmc-body">
+          To bridge Indonesian smallholder farmers with global capital through
+          tokenized, climate-resilient agricultural vaults on Solana.
+        </p>
+        <Link href="#how" className="hmc-link">
+          Learn More →
+        </Link>
       </motion.div>
     </section>
   )

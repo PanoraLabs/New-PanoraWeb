@@ -29,7 +29,7 @@ const buttonVariants = cva(
         nav:
           "bg-moss text-white rounded-full hover:bg-forest hover:-translate-y-px",
         "hero-cta":
-          "bg-sprout text-forest rounded-full hover:bg-[#4dab6a] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(93,187,122,0.35)] font-semibold",
+          "bg-[#f5f5f0] text-black rounded-full hover:bg-[#e5e5e0] hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.25)] font-medium gap-2",
         "hero-ghost":
           "bg-transparent text-white/80 border border-white/25 rounded-full hover:border-white/60 hover:text-white hover:bg-white/8",
       },

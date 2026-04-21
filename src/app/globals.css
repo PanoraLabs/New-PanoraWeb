@@ -1060,7 +1060,7 @@ nav.nav-scrolled {
 
 /* ── MERGED MARKET + ECONOMICS (scrollytelling) ── */
 .me-scroll-container {
-  background: var(--ink);
+  background: var(--cream);
   height: 250vh;
   position: relative;
 }
@@ -1095,7 +1095,7 @@ nav.nav-scrolled {
   font-size: clamp(40px, 5vw, 72px);
   line-height: 1.12;
   letter-spacing: -0.03em;
-  color: var(--white);
+  color: var(--forest);
   font-weight: 400;
 }
 
@@ -1144,7 +1144,7 @@ nav.nav-scrolled {
   gap: 16px;
   align-items: flex-start;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--stone);
   line-height: 1.5;
 }
 
@@ -1187,14 +1187,14 @@ nav.nav-scrolled {
 
 .me-dc-label {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--stone);
   margin-bottom: 6px;
 }
 
 .me-dc-val {
   font-family: var(--serif);
   font-size: 42px;
-  color: var(--white);
+  color: var(--forest);
 }
 
 .me-pct-col {
@@ -1215,7 +1215,7 @@ nav.nav-scrolled {
 
 .me-pct-label {
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--stone);
   margin-top: 4px;
 }
 

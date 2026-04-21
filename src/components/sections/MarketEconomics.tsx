@@ -17,9 +17,10 @@ export function MarketEconomics() {
     offset: ["start start", "end end"],
   })
 
-  // Left: statement 1 starts highlighted then dims; statement 2 starts hidden, fades to dimmed, then highlights
+  // Left: statement 1 starts highlighted then dims; statement 2 slides up from hidden → dimmed → highlighted
   const o1 = useTransform(scrollYProgress, [0, 0.3, 0.45, 0.5], [1, 1, 0.2, 0.2])
   const o2 = useTransform(scrollYProgress, [0, 0.2, 0.3, 0.45, 0.5, 1], [0, 0, 0.2, 0.2, 1, 1])
+  const y2 = useTransform(scrollYProgress, [0, 0.2, 0.3], [40, 40, 0])
 
   // Right: crossfade visuals
   const vis1Opacity = useTransform(scrollYProgress, [0, 0.35, 0.5], [1, 1, 0])
@@ -40,10 +41,10 @@ export function MarketEconomics() {
               <motion.span className="me-line" style={{ opacity: o1 }}>
                 <em>No lock-in</em> anxiety.
               </motion.span>
-              <motion.span className="me-line" style={{ opacity: o2 }}>
+              <motion.span className="me-line" style={{ opacity: o2, y: y2 }}>
                 A split built
               </motion.span>
-              <motion.span className="me-line" style={{ opacity: o2 }}>
+              <motion.span className="me-line" style={{ opacity: o2, y: y2 }}>
                 for <em>fairness.</em>
               </motion.span>
             </h2>
@@ -66,7 +67,7 @@ export function MarketEconomics() {
               <div className="me-split-row">
                 <div className="me-donut">
                   <svg viewBox="0 0 200 200">
-                    <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="28" />
+                    <circle cx="100" cy="100" r="80" fill="none" stroke="var(--mist)" strokeWidth="28" />
                     <motion.circle
                       cx="100" cy="100" r="80" fill="none"
                       stroke="var(--leaf)" strokeWidth="28"

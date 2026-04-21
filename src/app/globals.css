@@ -491,6 +491,22 @@ nav.nav-scrolled {
   background: var(--cream);
 }
 
+.hiw-header {
+  padding: 160px 60px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hiw-header .section-title {
+  font-size: clamp(48px, 6vw, 80px);
+  letter-spacing: -0.035em;
+  margin-bottom: 20px;
+}
+
+.hiw-header .section-sub {
+  font-size: 19px;
+}
+
 .hiw-sticky {
   position: sticky;
   top: 0;
@@ -750,6 +766,10 @@ nav.nav-scrolled {
 @media (max-width: 767px) {
   .hiw-section {
     height: 400vh;
+  }
+
+  .hiw-header {
+    padding: 80px 24px 48px;
   }
 
   .hiw-panel {

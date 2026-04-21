@@ -89,6 +89,15 @@ export function HowItWorks() {
 
   return (
     <section id="how" ref={sectionRef} className="hiw-section">
+      {/* Header - sits above the sticky area */}
+      <div className="hiw-header">
+        <div className="section-label">Process</div>
+        <h2 className="section-title">
+          From seed to <em>settlement</em>
+        </h2>
+        <p className="section-sub">Five on-chain steps, zero middlemen.</p>
+      </div>
+
       <div className="hiw-sticky">
         {/* Progress bar */}
         <div className="hiw-progress" style={{ width: `${progress * 100}%` }} />

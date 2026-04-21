@@ -14,6 +14,7 @@ import {
   StatsBar,
   Vaults,
 } from "./sections"
+import { ScrollProgress } from "./ui/scroll-progress"
 
 export function LandingPage() {
   const [loading, setLoading] = useState(true)
@@ -21,6 +22,7 @@ export function LandingPage() {
   return (
     <>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+      <ScrollProgress />
       <Nav />
       <Hero ready={!loading} />
       <main className="main-content">

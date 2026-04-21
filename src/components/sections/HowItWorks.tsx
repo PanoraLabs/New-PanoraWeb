@@ -67,6 +67,7 @@ const steps = [
 export function HowItWorks() {
   const sectionRef = useRef<HTMLElement>(null)
   const [progress, setProgress] = useState(0)
+  const [animatedPanels, setAnimatedPanels] = useState<Set<number>>(new Set([0]))
   const PANELS = steps.length
 
   useEffect(() => {
@@ -86,6 +87,15 @@ export function HowItWorks() {
 
   const activePanel = Math.min(PANELS - 1, Math.floor(progress * PANELS))
   const translateX = progress * (PANELS - 1) * 100
+
+  useEffect(() => {
+    setAnimatedPanels((prev) => {
+      if (prev.has(activePanel)) return prev
+      const next = new Set(prev)
+      next.add(activePanel)
+      return next
+    })
+  }, [activePanel])
 
   return (
     <section id="how" ref={sectionRef} className="hiw-section">
@@ -152,9 +162,8 @@ export function HowItWorks() {
                 <p className="hiw-eyebrow">Step {step.n} of {PANELS}</p>
                 <motion.span
                   className="hiw-panel-title"
-                  key={`title-${i}-${i === activePanel}`}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={i === activePanel ? { opacity: 1, y: 0 } : {}}
+                  animate={animatedPanels.has(i) ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.5 }}
                 >
                   {step.title}

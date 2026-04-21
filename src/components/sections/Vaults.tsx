@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef } from "react"
+import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 
 const vaults = [
@@ -10,6 +11,7 @@ const vaults = [
     desc: "Chili, tomato, shallot. Climate-controlled greenhouses eliminate weather risk and ensure supply consistency for modern retailers.",
     returnVal: "15–22%",
     duration: "90–110 days",
+    image: "/chili.jpg",
   },
   {
     name: "Export RWA",
@@ -17,6 +19,7 @@ const vaults = [
     desc: "Coffee, cacao, vanilla. Every batch minted as cNFT — full chain-of-custody from farm to foreign buyer. EUDR-ready by default.",
     returnVal: "18–28%",
     duration: "6–9 months",
+    image: "/coffee.jpg",
   },
   {
     name: "Bulk Commodity",
@@ -24,6 +27,7 @@ const vaults = [
     desc: "Rice and corn at scale, backed by off-taker guarantees from Bulog and licensed warehouses. Lower yield, higher volume security.",
     returnVal: "8–14%",
     duration: "4–5 months",
+    image: "/padi.jpg",
   },
 ] as const
 
@@ -112,69 +116,76 @@ export function Vaults() {
 
   return (
     <section id="vaults" ref={sectionRef} className="vault-scroll-section">
+      {/* Header - sits above the sticky area */}
+      <div className="vault-scroll-header">
+        <div className="vault-scroll-header-text">
+          <div className="section-label">Product</div>
+          <h2 className="section-title">
+            Three vault
+            <br />
+            <em>strategies</em>
+          </h2>
+        </div>
+        <p className="section-sub vault-header-sub">
+          Pick your risk profile. All secured by smart contracts and
+          Proof-of-Activity.
+        </p>
+      </div>
+
       <div className="vault-scroll-sticky">
         <div className="vaults-bg-circle" />
         <div className="vaults-bg-circle2" />
 
         <div className="vault-scroll-layout">
-          {/* Left side: header + text content */}
-          <div className="vault-scroll-left">
-            <div className="vault-scroll-header">
-              <div className="section-label">Product</div>
-              <h2 className="section-title" style={{ color: "white" }}>
-                Three vault
-                <br />
-                <em>strategies</em>
-              </h2>
-              <p className="section-sub">
-                Pick your risk profile. All secured by smart contracts and
-                Proof-of-Activity.
-              </p>
-            </div>
-
-            <div className="vault-scroll-cards-area">
-              <VaultProgress progress={scrollYProgress} />
-              <div className="vault-scroll-cards">
-                {vaults.map((vault, i) => (
-                  <VaultContent
-                    key={vault.title}
-                    vault={vault}
-                    index={i}
-                    progress={scrollYProgress}
-                  />
-                ))}
+          {/* Content + images */}
+          <div className="vault-scroll-bottom">
+            <div className="vault-scroll-left">
+              <div className="vault-scroll-cards-area">
+                <VaultProgress progress={scrollYProgress} />
+                <div className="vault-scroll-cards">
+                  {vaults.map((vault, i) => (
+                    <VaultContent
+                      key={vault.title}
+                      vault={vault}
+                      index={i}
+                      progress={scrollYProgress}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Right side: image placeholder */}
-          <div className="vault-scroll-right">
-            {vaults.map((vault, i) => {
-              const total = vaults.length
-              const segmentSize = 1 / total
-              const start = i * segmentSize
-              const end = start + segmentSize
-              const fadeIn = start + segmentSize * 0.1
-              const fadeOut = end - segmentSize * 0.1
+            <div className="vault-scroll-right">
+              {vaults.map((vault, i) => {
+                const total = vaults.length
+                const segmentSize = 1 / total
+                const start = i * segmentSize
+                const end = start + segmentSize
+                const fadeIn = start + segmentSize * 0.1
+                const fadeOut = end - segmentSize * 0.1
 
-              const opacity = useTransform(
-                scrollYProgress,
-                [start, fadeIn, fadeOut, end],
-                [0, 1, 1, i === total - 1 ? 1 : 0]
-              )
+                const opacity = useTransform(
+                  scrollYProgress,
+                  [start, fadeIn, fadeOut, end],
+                  [0, 1, 1, i === total - 1 ? 1 : 0]
+                )
 
-              return (
-                <motion.div
-                  key={vault.title}
-                  className="vault-scroll-image"
-                  style={{ opacity }}
-                >
-                  <div className="vault-image-placeholder">
-                    <span className="vault-image-label">{vault.title}</span>
-                  </div>
-                </motion.div>
-              )
-            })}
+                return (
+                  <motion.div
+                    key={vault.title}
+                    className="vault-scroll-image"
+                    style={{ opacity }}
+                  >
+                    <Image
+                      src={vault.image}
+                      alt={vault.title}
+                      fill
+                      className="vault-image-photo"
+                    />
+                  </motion.div>
+                )
+              })}
+            </div>
           </div>
         </div>
       </div>

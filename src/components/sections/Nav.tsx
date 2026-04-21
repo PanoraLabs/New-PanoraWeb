@@ -30,17 +30,21 @@ export function Nav() {
       transition={{ duration: 0.8, ease: "easeOut" as const }}
       className={scrolled ? "nav-scrolled" : "nav-hero"}
     >
-      <Link href="/" className="nav-logo">
-        <Image
-          src="/logo.png"
-          alt="Panora Labs"
-          width={1456}
-          height={816}
-          style={{ height: "50px", width: "auto" }}
-          priority
-        />
-      </Link>
+      {/* Left: logo */}
+      <div className="nav-left">
+        <Link href="/" className="nav-logo">
+          <Image
+            src="/logo.png"
+            alt="Panora Labs"
+            width={1456}
+            height={816}
+            style={{ height: "50px", width: "auto" }}
+            priority
+          />
+        </Link>
+      </div>
 
+      {/* Center: links */}
       <ul className="nav-links">
         {navItems.map(({ href, label }) => (
           <li key={href}>
@@ -49,9 +53,18 @@ export function Nav() {
         ))}
       </ul>
 
-      <Button variant="nav" size="nav" asChild>
-        <Link href="#vaults">Explore Vaults</Link>
-      </Button>
+      {/* Right: CTA */}
+      <div className="nav-right">
+        <Button variant="hero-cta" size="nav" asChild>
+          <Link href="#vaults">
+            Explore Vaults
+            <svg className="-mr-1" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+        </Button>
+      </div>
     </motion.nav>
   )
 }

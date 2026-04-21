@@ -4,7 +4,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -24,59 +23,53 @@ export function Hero() {
         className="hero-bg-photo"
         style={{ objectFit: "cover", objectPosition: "center" }}
       />
+      <div className="hero-top-gradient" />
       <div className="hero-overlay" />
 
-      {/* Bottom-left: main content */}
-      <div className="hero-content">
-        <motion.div {...fadeUp(0.1)} className="mb-6">
-          <Badge variant="hero">
-            <motion.span
-              className="hero-badge-dot"
-              animate={{ opacity: [1, 0.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            />
-            Climate-Smart RWA Agriculture — Now Live
-          </Badge>
-        </motion.div>
-
-        <motion.h1 className="hero-title" {...fadeUp(0.2)}>
-          Growing
-          <br />
-          <em>real yields</em>
-          <br />
-          on-chain.
-        </motion.h1>
-
-        <motion.p className="hero-sub" {...fadeUp(0.3)}>
-          Panora Labs connects investors with verified Indonesian farmers through
-          blockchain-powered vaults — transparent, traceable, and
-          climate-resilient.
-        </motion.p>
-
-        <motion.div className="hero-actions" {...fadeUp(0.4)}>
-          <Button variant="hero-cta" asChild>
-            <Link href="#vaults">Start Investing →</Link>
-          </Button>
-          <Button variant="hero-ghost" asChild>
-            <Link href="#how">See How It Works</Link>
-          </Button>
-        </motion.div>
-      </div>
-
-      {/* Bottom-right: glass mission card */}
-      <motion.div className="hero-mission-card" {...fadeUp(0.55)}>
-        <div className="hmc-header">
-          <span className="hmc-dot" />
-          <span className="hmc-title">Our Mission</span>
+      {/* Bottom content bar — split left/right */}
+      <div className="hero-bottom">
+        {/* Left: large title */}
+        <div className="hero-left">
+          <motion.h1 className="hero-title" {...fadeUp(0.2)}>
+            Growing
+            <br />
+            <em>real yields,</em>
+            <br />
+            on-chain.
+          </motion.h1>
         </div>
-        <p className="hmc-body">
-          To bridge Indonesian smallholder farmers with global capital through
-          tokenized, climate-resilient agricultural vaults on Solana.
-        </p>
-        <Link href="#how" className="hmc-link">
-          Learn More →
-        </Link>
-      </motion.div>
+
+        {/* Right: buttons + description */}
+        <div className="hero-right">
+          <motion.div className="hero-right-content" {...fadeUp(0.35)}>
+            <div className="hero-buttons">
+              <button className="hero-glass-btn" onClick={() => document.getElementById('how')?.scrollIntoView({ behavior: 'smooth' })}>
+                <svg width="19" height="19" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="9.7" stroke="currentColor" strokeWidth="0.56" />
+                  <path d="M12.59 9.91a.2.2 0 0 1 0 .32l-3.7 2.78a.2.2 0 0 1-.32-.16V7.29a.2.2 0 0 1 .32-.16l3.7 2.78Z" fill="currentColor" />
+                </svg>
+                See how it works
+              </button>
+
+              <Button variant="hero-cta" asChild>
+                <Link href="#vaults">
+                  Start Investing
+                  <svg className="-mr-1" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </Button>
+            </div>
+
+            <p className="hero-description">
+              Panora Labs connects investors with verified Indonesian farmers
+              through blockchain-powered vaults — transparent, traceable, and
+              climate-resilient.
+            </p>
+          </motion.div>
+        </div>
+      </div>
     </section>
   )
 }

@@ -1,6 +1,11 @@
+"use client"
+
+import { useState } from "react"
 import {
+  AboutPanora,
   Hero,
   HowItWorks,
+  LoadingScreen,
   Nav,
   Proof,
   SecondaryMarket,
@@ -11,17 +16,23 @@ import {
 } from "./sections"
 
 export function LandingPage() {
+  const [loading, setLoading] = useState(true)
+
   return (
     <>
+      {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       <Nav />
       <Hero />
-      <StatsBar />
-      <HowItWorks />
-      <Vaults />
-      <SecondaryMarket />
-      <Proof />
-      <SplitEconomics />
-      <SiteFooter />
+      <main className="main-content">
+        <AboutPanora />
+        <HowItWorks />
+        <Vaults />
+        <StatsBar />
+        <SecondaryMarket />
+        <Proof />
+        <SplitEconomics />
+        <SiteFooter />
+      </main>
     </>
   )
 }

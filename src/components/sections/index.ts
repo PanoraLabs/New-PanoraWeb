@@ -1,3 +1,5 @@
+export { AboutPanora } from "./AboutPanora"
+export { LoadingScreen } from "./LoadingScreen"
 export { Nav } from "./Nav"
 export { Hero } from "./Hero"
 export { StatsBar } from "./StatsBar"

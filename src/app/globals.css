@@ -50,6 +50,7 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--ink);
 }
 
 body {
@@ -57,6 +58,46 @@ body {
   background: var(--cream);
   color: var(--ink);
   overflow-x: hidden;
+}
+
+/* ── LOADING SCREEN ── */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.loading-logo {
+  height: 48px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.loading-bar-track {
+  width: 120px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  width: 100%;
+  height: 100%;
+  background: var(--sprout);
+  transform-origin: left;
+  border-radius: 2px;
 }
 
 /* ── NAV ── */
@@ -140,9 +181,18 @@ nav.nav-scrolled {
 
 /* ── HERO ── */
 #hero {
-  min-height: 100vh;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
   overflow: hidden;
+  z-index: 0;
+}
+
+.hero-spacer {
+  height: 100vh;
+  position: relative;
 }
 
 /* Top gradient for nav legibility */
@@ -272,6 +322,13 @@ nav.nav-scrolled {
   font-weight: 300;
 }
 
+/* ── MAIN CONTENT (sits above fixed hero) ── */
+.main-content {
+  position: relative;
+  z-index: 1;
+  background: var(--cream);
+}
+
 /* ── STATS BAR ── */
 #stats {
   background: var(--forest);
@@ -302,6 +359,72 @@ nav.nav-scrolled {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.02em;
+}
+
+/* ── ABOUT PANORA ── */
+.about-panora {
+  padding: 160px 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-panora-inner {
+  max-width: 900px;
+  width: 100%;
+}
+
+.about-panora-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 500;
+  margin-bottom: 64px;
+}
+
+.about-panora-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--leaf);
+  flex-shrink: 0;
+}
+
+.about-panora-text {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--forest);
+  margin-bottom: 48px;
+  font-weight: 400;
+}
+
+.about-panora-cta {
+  display: flex;
+}
+
+.about-panora-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--forest);
+  border: 1px dashed rgba(13, 43, 26, 0.3);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.about-panora-btn:hover {
+  border-color: var(--forest);
+  background: rgba(13, 43, 26, 0.04);
 }
 
 /* ── HOW IT WORKS ── */

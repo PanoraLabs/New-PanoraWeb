@@ -2,7 +2,8 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { useRef } from "react"
 import { Button } from "@/components/ui/button"
 
 const fadeUp = (delay: number) => ({
@@ -12,22 +13,43 @@ const fadeUp = (delay: number) => ({
 })
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  })
+
+  // Background moves slower (parallax) + fades out
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"])
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
+  // Content slides up faster + fades out
+  const contentY = useTransform(scrollYProgress, [0, 0.6], ["0px", "-80px"])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+
   return (
-    <section id="hero">
-      {/* Background image */}
-      <Image
-        src="/hero.jpg"
-        alt=""
-        fill
-        priority
-        className="hero-bg-photo"
-        style={{ objectFit: "cover", objectPosition: "center" }}
-      />
+    <section id="hero" ref={sectionRef}>
+      {/* Background image — parallax layer */}
+      <motion.div
+        className="hero-parallax-layer"
+        style={{ y: bgY, scale: bgScale }}
+      >
+        <Image
+          src="/hero.jpg"
+          alt=""
+          fill
+          priority
+          className="hero-bg-photo"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+      </motion.div>
       <div className="hero-top-gradient" />
       <div className="hero-overlay" />
 
       {/* Bottom content bar — split left/right */}
-      <div className="hero-bottom">
+      <motion.div
+        className="hero-bottom"
+        style={{ y: contentY, opacity: contentOpacity }}
+      >
         {/* Left: large title */}
         <div className="hero-left">
           <motion.h1 className="hero-title" {...fadeUp(0.2)}>
@@ -69,7 +91,7 @@ export function Hero() {
             </p>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

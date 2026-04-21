@@ -8,9 +8,8 @@ import {
   LoadingScreen,
   Nav,
   Proof,
-  SecondaryMarket,
+  MarketEconomics,
   SiteFooter,
-  SplitEconomics,
   StatsBar,
   Vaults,
 } from "./sections"
@@ -31,8 +30,7 @@ export function LandingPage() {
         <Proof />
         <HowItWorks />
         <Vaults />
-        <SecondaryMarket />
-        <SplitEconomics />
+        <MarketEconomics />
         <SiteFooter />
       </main>
     </>

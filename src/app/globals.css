@@ -48,6 +48,34 @@
   --radius: 0.5rem;
 }
 
+.dark {
+  /* ── Project palette overrides ── */
+  --cream: #0c1a10;
+  --ink: #e8f0ea;
+  --stone: #8a9a8e;
+
+  /* ── shadcn semantic tokens (dark) ── */
+  --background: #0c1a10;
+  --foreground: #e8f0ea;
+  --card: #132118;
+  --card-foreground: #e8f0ea;
+  --popover: #132118;
+  --popover-foreground: #e8f0ea;
+  --primary: #5dbb7a;
+  --primary-foreground: #0c1a10;
+  --secondary: #1a2e20;
+  --secondary-foreground: #c8d8cc;
+  --muted: #1a2e20;
+  --muted-foreground: #8a9a8e;
+  --accent: #1a3525;
+  --accent-foreground: #5dbb7a;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(93, 187, 122, 0.12);
+  --input: rgba(93, 187, 122, 0.12);
+  --ring: #5dbb7a;
+}
+
 html {
   scroll-behavior: smooth;
   background: var(--ink);
@@ -1486,6 +1514,159 @@ footer {
   }
 }
 
+/* ── DARK MODE OVERRIDES ── */
+.dark body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.dark .main-content {
+  background: var(--background);
+}
+
+/* Nav scrolled toggle icon color */
+nav.nav-scrolled .nav-right button[type="button"] {
+  color: var(--stone);
+}
+
+nav.nav-scrolled .nav-right button[type="button"]:hover {
+  color: var(--forest);
+}
+
+.dark nav.nav-scrolled .nav-right button[type="button"] {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark nav.nav-scrolled .nav-right button[type="button"]:hover {
+  color: var(--white);
+}
+
+/* Nav scrolled: dark glass */
+.dark nav.nav-scrolled {
+  background: rgba(12, 26, 16, 0.8);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark .nav-links a {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark .nav-links a:hover {
+  color: var(--white);
+}
+
+/* About Panora */
+.dark .about-panora-text {
+  color: var(--foreground);
+}
+
+.dark .about-panora-tag {
+  color: var(--stone);
+}
+
+.dark .about-panora-btn {
+  color: var(--foreground);
+  border-color: rgba(93, 187, 122, 0.3);
+}
+
+.dark .about-panora-btn:hover {
+  border-color: var(--sprout);
+  background: rgba(93, 187, 122, 0.08);
+}
+
+/* How It Works */
+.dark .hiw-section {
+  background: var(--background);
+}
+
+.dark .section-title {
+  color: var(--foreground);
+}
+
+.dark .hiw-panel-title {
+  color: var(--foreground);
+}
+
+.dark .hiw-ghost {
+  color: rgba(93, 187, 122, 0.04);
+}
+
+.dark .hiw-icon-wrap {
+  border-color: rgba(93, 187, 122, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dark .hiw-icon-wrap::before {
+  border-color: rgba(93, 187, 122, 0.08);
+}
+
+.dark .hiw-icon-wrap::after {
+  border-color: rgba(93, 187, 122, 0.05);
+}
+
+.dark .hiw-meta-val {
+  color: var(--foreground);
+}
+
+.dark .hiw-step-meta {
+  border-top-color: rgba(93, 187, 122, 0.1);
+}
+
+.dark .hiw-meta-item {
+  border-right-color: rgba(93, 187, 122, 0.08);
+}
+
+.dark .hiw-nav-dot.active {
+  color: var(--sprout);
+}
+
+/* Vault scroll header */
+.dark .vault-scroll-section {
+  background: var(--background);
+}
+
+/* Market & Economics */
+.dark .me-scroll-container {
+  background: var(--background);
+}
+
+.dark .me-statement {
+  color: var(--foreground);
+}
+
+.dark .me-checklist li {
+  color: var(--stone);
+}
+
+.dark .me-dc-val {
+  color: var(--foreground);
+}
+
+/* Proof / Trust */
+.dark #proof {
+  background: var(--secondary);
+}
+
+.dark .proof-infra-title {
+  color: var(--foreground);
+}
+
+.dark .proof-built-label {
+  color: var(--sprout);
+}
+
+.dark .proof-logo {
+  color: var(--stone);
+}
+
+.dark .proof-marquee-wrapper::before {
+  background: linear-gradient(to right, var(--secondary), transparent);
+}
+
+.dark .proof-marquee-wrapper::after {
+  background: linear-gradient(to left, var(--secondary), transparent);
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -1502,4 +1683,9 @@ footer {
   to {
     transform: translateY(calc(-100% - 3rem));
   }
+}
+
+::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
 }

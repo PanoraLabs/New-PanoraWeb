@@ -79,11 +79,12 @@
 html {
   scroll-behavior: smooth;
   background: var(--ink);
+  overscroll-behavior: none;
 }
 
 body {
   font-family: var(--sans);
-  background: var(--cream);
+  background: var(--ink);
   color: var(--ink);
   overflow-x: hidden;
 }

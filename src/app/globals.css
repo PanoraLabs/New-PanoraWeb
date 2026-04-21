@@ -330,35 +330,92 @@ nav.nav-scrolled {
 }
 
 /* ── STATS BAR ── */
+/* ── STATS BAR ── */
 #stats {
   background: var(--forest);
-  padding: 48px 60px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 60px;
 }
 
-.stat-item {
-  text-align: center;
+.stats-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.stats-row {
+  display: flex;
+  align-items: flex-end;
+  padding: 24px 0;
+}
+
+.stats-row-1 {
+  justify-content: flex-end;
+  gap: clamp(40px, 8vw, 160px);
+}
+
+.stats-row-2 {
+  justify-content: flex-start;
+}
+
+.stats-row-3 {
+  justify-content: center;
+}
+
+.stats-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stats-box-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
 }
 
 .stat-num {
   font-family: var(--serif);
-  font-size: 48px;
+  font-size: clamp(80px, 12vw, 200px);
   color: var(--white);
-  line-height: 1;
-  margin-bottom: 8px;
+  line-height: 0.85;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
-.stat-num span {
-  font-size: 28px;
+.stat-suffix {
+  font-size: 0.4em;
   color: var(--sprout);
 }
 
+.stat-unit {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 48px);
+  color: var(--sprout);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.stat-ticker {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+
 .stat-label {
-  font-size: 14px;
+  font-size: 15px;
   color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  max-width: 300px;
 }
 
 /* ── ABOUT PANORA ── */
@@ -467,34 +524,25 @@ nav.nav-scrolled {
 }
 
 .steps {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 0;
   position: relative;
 }
 
-.steps::before {
-  content: "";
-  position: absolute;
-  top: 28px;
-  left: 8%;
-  right: 8%;
-  height: 1px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--leaf) 0px,
-    var(--leaf) 6px,
-    transparent 6px,
-    transparent 14px
-  );
-  z-index: 0;
+.step {
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  position: relative;
 }
 
-.step {
-  text-align: center;
-  padding: 0 12px;
-  position: relative;
-  z-index: 1;
+.step-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 56px;
 }
 
 .step-num {
@@ -509,7 +557,7 @@ nav.nav-scrolled {
   font-family: var(--serif);
   font-size: 22px;
   color: var(--forest);
-  margin: 0 auto 20px;
+  flex-shrink: 0;
   transition: all 0.3s;
 }
 
@@ -520,17 +568,36 @@ nav.nav-scrolled {
   transform: scale(1.1);
 }
 
+.step-connector {
+  width: 1px;
+  flex: 1;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--leaf) 0px,
+    var(--leaf) 6px,
+    transparent 6px,
+    transparent 14px
+  );
+}
+
+.step-content {
+  padding: 14px 0 64px;
+}
+
 .step-title {
-  font-size: 15px;
-  font-weight: 500;
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 400;
   color: var(--forest);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  line-height: 1.2;
 }
 
 .step-desc {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--stone);
-  line-height: 1.55;
+  line-height: 1.6;
+  max-width: 480px;
 }
 
 /* ── PRODUCTS / VAULTS ── */
@@ -1015,8 +1082,13 @@ footer {
   }
 
   #stats {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 48px 24px;
+    padding: 60px 24px;
+  }
+
+  .stats-row-1 {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
   }
 
   #how {

@@ -22,12 +22,12 @@ export function LandingPage() {
     <>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       <Nav />
-      <Hero />
+      <Hero ready={!loading} />
       <main className="main-content">
         <AboutPanora />
+        <StatsBar />
         <HowItWorks />
         <Vaults />
-        <StatsBar />
         <SecondaryMarket />
         <Proof />
         <SplitEconomics />

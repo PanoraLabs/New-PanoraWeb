@@ -1685,6 +1685,48 @@ nav.nav-scrolled .nav-right button[type="button"]:hover {
   }
 }
 
+/* Nav logo: invert to white in dark mode */
+.dark .nav-logo img {
+  filter: brightness(0) invert(1);
+}
+
+/* Footer dark mode */
+.dark footer {
+  background: var(--secondary);
+}
+
+.dark .footer-top {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark .footer-brand-name {
+  color: var(--foreground);
+}
+
+.dark .footer-brand-desc {
+  color: var(--stone);
+}
+
+.dark .footer-col-title {
+  color: var(--stone);
+}
+
+.dark .footer-links a {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark .footer-links a:hover {
+  color: var(--foreground);
+}
+
+.dark .footer-copy {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.dark .footer-built {
+  color: rgba(255, 255, 255, 0.25);
+}
+
 ::view-transition-old(root), ::view-transition-new(root) {
     animation: none;
     mix-blend-mode: normal;

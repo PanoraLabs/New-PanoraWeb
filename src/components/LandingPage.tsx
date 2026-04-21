@@ -28,10 +28,10 @@ export function LandingPage() {
       <main className="main-content">
         <AboutPanora />
         <StatsBar />
+        <Proof />
         <HowItWorks />
         <Vaults />
         <SecondaryMarket />
-        <Proof />
         <SplitEconomics />
         <SiteFooter />
       </main>

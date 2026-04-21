@@ -5,8 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion"
 
 const vaults = [
   {
-    icon: "🌶️",
-    iconClass: "vi-green",
     name: "High Value",
     title: "Greenhouse Produce",
     desc: "Chili, tomato, shallot. Climate-controlled greenhouses eliminate weather risk and ensure supply consistency for modern retailers.",
@@ -14,8 +12,6 @@ const vaults = [
     duration: "90–110 days",
   },
   {
-    icon: "☕",
-    iconClass: "vi-gold",
     name: "Export RWA",
     title: "Traceable Exports",
     desc: "Coffee, cacao, vanilla. Every batch minted as cNFT — full chain-of-custody from farm to foreign buyer. EUDR-ready by default.",
@@ -23,8 +19,6 @@ const vaults = [
     duration: "6–9 months",
   },
   {
-    icon: "🌾",
-    iconClass: "vi-blue",
     name: "Bulk Commodity",
     title: "Staple Crops",
     desc: "Rice and corn at scale, backed by off-taker guarantees from Bulog and licensed warehouses. Lower yield, higher volume security.",
@@ -56,7 +50,6 @@ function VaultContent({
 
   return (
     <motion.div className="vault-scroll-content" style={{ opacity, y }}>
-      <div className={`vault-icon ${vault.iconClass}`}>{vault.icon}</div>
       <div className="vault-name">{vault.name}</div>
       <h3 className="vault-scroll-title">{vault.title}</h3>
       <p className="vault-scroll-desc">{vault.desc}</p>
@@ -177,9 +170,6 @@ export function Vaults() {
                   style={{ opacity }}
                 >
                   <div className="vault-image-placeholder">
-                    <div className={`vault-icon ${vault.iconClass}`} style={{ width: 64, height: 64, fontSize: 32 }}>
-                      {vault.icon}
-                    </div>
                     <span className="vault-image-label">{vault.title}</span>
                   </div>
                 </motion.div>

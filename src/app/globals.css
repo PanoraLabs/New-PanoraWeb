@@ -1025,29 +1025,6 @@ nav.nav-scrolled {
   left: 100px;
 }
 
-.vault-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-.vi-green {
-  background: rgba(93, 187, 122, 0.15);
-}
-
-.vi-gold {
-  background: rgba(200, 150, 30, 0.15);
-}
-
-.vi-blue {
-  background: rgba(100, 160, 220, 0.15);
-}
-
 .vault-name {
   font-size: 11px;
   letter-spacing: 0.1em;

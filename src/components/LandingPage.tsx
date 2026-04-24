@@ -9,6 +9,7 @@ import {
   Nav,
   Proof,
   MarketEconomics,
+  FAQ,
   SiteFooter,
   StatsBar,
   Vaults,
@@ -31,6 +32,7 @@ export function LandingPage() {
         <HowItWorks />
         <Vaults />
         <MarketEconomics />
+        <FAQ />
         <SiteFooter />
       </main>
     </>

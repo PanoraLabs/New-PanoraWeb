@@ -1264,6 +1264,10 @@ nav.nav-scrolled {
   position: relative;
 }
 
+.proof-marquee-wrapper .marquee-track {
+  align-items: center;
+}
+
 .proof-marquee-wrapper::before,
 .proof-marquee-wrapper::after {
   content: "";
@@ -1286,18 +1290,18 @@ nav.nav-scrolled {
 }
 
 .proof-marquee {
-  --gap: 3rem;
+  --gap: 4rem;
   --duration: 30s;
 }
 
 .proof-logo {
-  font-family: var(--serif);
-  font-size: 18px;
-  color: var(--stone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
   opacity: 0.6;
   transition: opacity 0.2s;
-  white-space: nowrap;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
 }
 
 .proof-logo:hover {

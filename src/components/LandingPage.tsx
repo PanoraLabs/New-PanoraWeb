@@ -26,7 +26,7 @@ export function LandingPage() {
       <Hero ready={!loading} />
       <main className="main-content">
         <AboutPanora />
-        <StatsBar />
+        {/* <StatsBar /> */}
         <Proof />
         <HowItWorks />
         <Vaults />

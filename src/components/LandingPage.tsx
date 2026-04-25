@@ -8,12 +8,13 @@ import {
   LoadingScreen,
   Nav,
   Proof,
-  SecondaryMarket,
+  MarketEconomics,
+  FAQ,
   SiteFooter,
-  SplitEconomics,
   StatsBar,
   Vaults,
 } from "./sections"
+import { ScrollProgress } from "./ui/scroll-progress"
 
 export function LandingPage() {
   const [loading, setLoading] = useState(true)
@@ -21,16 +22,17 @@ export function LandingPage() {
   return (
     <>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+      <ScrollProgress />
       <Nav />
       <Hero ready={!loading} />
       <main className="main-content">
         <AboutPanora />
-        <StatsBar />
+        {/* <StatsBar /> */}
+        <Proof />
         <HowItWorks />
         <Vaults />
-        <SecondaryMarket />
-        <Proof />
-        <SplitEconomics />
+        <MarketEconomics />
+        <FAQ />
         <SiteFooter />
       </main>
     </>

@@ -46,9 +46,6 @@ export function SiteFooter() {
       </div>
       <div className="footer-bottom">
         <span className="footer-copy">© 2026 Panora Labs. All rights reserved.</span>
-        <span className="footer-built">
-          Built by <span>Prasetio Wibowo</span>
-        </span>
       </div>
     </footer>
   )

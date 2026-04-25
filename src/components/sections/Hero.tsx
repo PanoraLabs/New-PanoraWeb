@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 
 const fadeUp = (delay: number, ready: boolean) => ({
@@ -26,8 +26,19 @@ const scaleIn = (delay: number, ready: boolean) => ({
   transition: { delay, duration: 0.7, ease: "easeOut" as const },
 })
 
+const heroImages = ["/hero.jpg", "/hero1.jpg", "/hero2.jpg", "/hero3.jpg"]
+const ROTATE_INTERVAL = 5000
+
 export function Hero({ ready }: { ready: boolean }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
   const { scrollY } = useScroll()
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length)
+    }, ROTATE_INTERVAL)
+    return () => clearInterval(timer)
+  }, [])
 
   // Parallax driven by raw scroll pixels (over first viewport height)
   const bgY = useTransform(scrollY, [0, 800], [0, 200])
@@ -44,14 +55,23 @@ export function Hero({ ready }: { ready: boolean }) {
           className="hero-parallax-layer"
           style={{ y: bgY, scale: bgScale }}
         >
-          <Image
-            src="/hero.jpg"
-            alt=""
-            fill
-            priority
-            className="hero-bg-photo"
-            style={{ objectFit: "cover", objectPosition: "center" }}
-          />
+          {heroImages.map((src, i) => (
+            <motion.div
+              key={src}
+              animate={{ opacity: i === currentIndex ? 1 : 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              style={{ position: "absolute", inset: 0 }}
+            >
+              <Image
+                src={src}
+                alt=""
+                fill
+                priority={i === 0}
+                className="hero-bg-photo"
+                style={{ objectFit: "cover", objectPosition: "center" }}
+              />
+            </motion.div>
+          ))}
         </motion.div>
         <div className="hero-top-gradient" />
         <div className="hero-overlay" />

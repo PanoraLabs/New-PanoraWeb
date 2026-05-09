@@ -110,7 +110,7 @@ body {
 .loading-logo {
   height: 48px;
   width: auto;
-  filter: brightness(0) invert(1);
+  filter: brightness(0);
 }
 
 .loading-bar-track {
@@ -236,12 +236,11 @@ nav.nav-scrolled {
   pointer-events: none;
 }
 
-/* Parallax wrapper for the background */
+/* Hero background wrapper — image stays fixed; next section slides over */
 .hero-parallax-layer {
   position: absolute;
-  inset: -10% 0 0 0;
+  inset: 0;
   z-index: 0;
-  will-change: transform;
 }
 
 /* Hero background image (Next.js <Image fill>) */
@@ -987,189 +986,9 @@ nav.nav-scrolled {
   }
 }
 
-/* ── PRODUCTS / VAULTS (scroll-driven) ── */
-.vault-scroll-section {
-  height: 300vh;
-  position: relative;
-  background: var(--cream);
-}
-
-.vault-scroll-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--forest);
-}
-
-.vault-scroll-layout {
-  max-width: 1200px;
-  width: 100%;
-  height: 100%;
-  padding: 0 60px;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-}
-
-.vault-scroll-header {
-  display: flex;
-  align-items: flex-end;
-  gap: 40px;
-  padding: 160px 60px 80px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.vault-scroll-header .section-title {
-  font-size: clamp(48px, 6vw, 80px);
-  letter-spacing: -0.035em;
-  margin-bottom: 0;
-}
-
-.vault-header-sub {
-  max-width: 280px;
-  margin-bottom: 6px;
-  font-size: 19px;
-}
-
-.vault-scroll-bottom {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  width: 100%;
-}
-
-.vault-scroll-left {
-  display: flex;
-  flex-direction: column;
-}
-
-.vault-scroll-cards-area {
-  display: flex;
-  gap: 24px;
-  align-items: stretch;
-}
-
-.vault-scroll-cards {
-  position: relative;
-  flex: 1;
-  min-height: 260px;
-}
-
-.vault-scroll-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.vault-scroll-title {
-  font-family: var(--serif);
-  font-size: 48px;
-  color: var(--white);
-  margin-bottom: 16px;
-}
-
-.vault-scroll-desc {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.55);
-  line-height: 1.7;
-  margin-bottom: 36px;
-  max-width: 500px;
-}
-
-/* Progress indicator */
-.vault-progress-track {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  position: relative;
-  padding: 4px 0;
-}
-
-.vault-progress-line {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.vault-progress-fill {
-  width: 100%;
-  background: var(--sprout);
-  border-radius: 1px;
-}
-
-.vault-progress-dot {
-  position: relative;
-  z-index: 1;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.vault-progress-index {
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: 500;
-}
-
-/* Right side: image area */
-.vault-scroll-right {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  max-height: 70vh;
-  border-radius: 16px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.vault-scroll-image {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* ── PRODUCTS / VAULTS — shared card styles ── */
 .vault-image-photo {
   object-fit: cover;
-  border-radius: 20px;
-}
-
-/* Shared vault styles */
-.vaults-bg-circle {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  top: -200px;
-  right: -200px;
-}
-
-.vaults-bg-circle2 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  bottom: -100px;
-  left: 100px;
 }
 
 .vault-name {
@@ -1199,35 +1018,51 @@ nav.nav-scrolled {
   color: var(--sprout);
 }
 
-/* ── VAULTS — Mobile Cards ── */
+/* ── VAULTS — Card Grid ── */
 .vault-mobile-section {
-  background: var(--forest);
-  padding: 80px 24px 96px;
+  background: var(--mist);
+  padding: 120px 60px 120px;
 }
 
 .vault-mobile-header {
-  margin-bottom: 48px;
+  margin: 0 auto 64px;
+  max-width: 1200px;
 }
 
 .vault-mobile-header .section-title {
-  color: var(--white);
+  color: var(--ink);
 }
 
 .vault-mobile-header .section-sub {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--stone);
 }
 
 .vault-mobile-list {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .vault-mobile-section {
+    padding: 80px 24px 96px;
+  }
+  .vault-mobile-header {
+    margin-bottom: 48px;
+  }
+  .vault-mobile-list {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }
 
 .vault-mobile-card {
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--white);
+  border: 1px solid rgba(13, 43, 26, 0.08);
 }
 
 .vault-mobile-image {
@@ -1247,28 +1082,34 @@ nav.nav-scrolled {
 .vault-mobile-title {
   font-family: var(--serif);
   font-size: 28px;
-  color: var(--white);
+  color: var(--ink);
   margin-bottom: 12px;
   line-height: 1.2;
 }
 
 .vault-mobile-desc {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--stone);
   line-height: 1.7;
   margin-bottom: 24px;
 }
 
 .vault-mobile-card .vault-name {
   margin-bottom: 8px;
+  color: var(--stone);
 }
 
-.vault-mobile-card .vault-meta {
-  gap: 32px;
+.vault-mobile-card .vm-label {
+  color: var(--stone);
 }
 
 .vault-mobile-card .vm-val {
   font-size: 18px;
+  color: var(--moss);
+}
+
+.vault-mobile-card .vault-meta {
+  gap: 32px;
 }
 
 /* Dark mode */
@@ -1280,9 +1121,30 @@ nav.nav-scrolled {
   color: var(--foreground);
 }
 
+.dark .vault-mobile-header .section-sub {
+  color: rgba(232, 240, 234, 0.6);
+}
+
 .dark .vault-mobile-card {
   background: rgba(255, 255, 255, 0.03);
   border-color: rgba(93, 187, 122, 0.1);
+}
+
+.dark .vault-mobile-title {
+  color: var(--foreground);
+}
+
+.dark .vault-mobile-desc {
+  color: rgba(232, 240, 234, 0.55);
+}
+
+.dark .vault-mobile-card .vault-name,
+.dark .vault-mobile-card .vm-label {
+  color: rgba(232, 240, 234, 0.45);
+}
+
+.dark .vault-mobile-card .vm-val {
+  color: var(--sprout);
 }
 
 @media (max-width: 480px) {
@@ -1303,78 +1165,43 @@ nav.nav-scrolled {
   }
 }
 
-/* ── MERGED MARKET + ECONOMICS (scrollytelling) ── */
-.me-scroll-container {
+/* ── MARKET + ECONOMICS — Card Grid ── */
+.me-section {
   background: var(--cream);
-  height: 250vh;
-  position: relative;
+  padding: 120px 60px;
 }
 
-.me-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.me-inner {
+.me-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 80px;
+  gap: 32px;
   max-width: 1200px;
-  width: 100%;
-  padding: 0 60px;
-  align-items: center;
+  margin: 0 auto;
 }
 
-/* Desktop grid: statements left, visuals right (overlapping for crossfade) */
-.me-s1 {
-  grid-column: 1;
-  grid-row: 1 / 3;
+.me-card {
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  padding: 48px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 32px;
 }
 
-.me-s2 {
-  grid-column: 1;
-  grid-row: 1 / 3;
-  display: flex;
-  align-items: center;
-}
-
-.me-v1 {
-  grid-column: 2;
-  grid-row: 1 / 3;
-  display: flex;
-  align-items: center;
-}
-
-.me-v2 {
-  grid-column: 2;
-  grid-row: 1 / 3;
-  display: flex;
-  align-items: center;
-}
-
-.me-statement {
+.me-card-title {
   font-family: var(--serif);
-  font-size: clamp(40px, 5vw, 72px);
-  line-height: 1.12;
-  letter-spacing: -0.03em;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: var(--forest);
   font-weight: 400;
+  margin: 0;
 }
 
-.me-statement em {
+.me-card-title em {
   font-style: italic;
   color: var(--leaf);
-}
-
-.me-line {
-  display: block;
 }
 
 /* checklist */
@@ -1848,52 +1675,23 @@ footer {
     font-size: 18px;
   }
 
-  /* Market Economics — mobile: interleave statements with visuals */
-  .me-scroll-container {
-    height: auto;
+  /* Market Economics — stack cards on tablet + below */
+  .me-section {
+    padding: 80px 24px;
   }
 
-  .me-sticky {
-    position: static;
-    height: auto;
-    padding: 60px 0;
-  }
-
-  .me-inner {
+  .me-grid {
     grid-template-columns: 1fr;
-    gap: 0;
-    padding: 0 24px;
+    gap: 24px;
   }
 
-  .me-s1,
-  .me-s2,
-  .me-v1,
-  .me-v2 {
-    grid-column: 1;
-    grid-row: auto;
-    opacity: 1 !important;
-    transform: none !important;
+  .me-card {
+    padding: 32px 28px;
+    gap: 28px;
   }
 
-  .me-s1 { order: 1; }
-  .me-v1 { order: 2; margin-top: 32px; }
-  .me-s2 { order: 3; margin-top: 48px; }
-  .me-v2 { order: 4; margin-top: 32px; }
-
-  .me-s1,
-  .me-s2 {
-    text-align: center;
-    justify-content: center;
-  }
-
-  .me-statement {
-    font-size: clamp(28px, 7vw, 42px);
-    opacity: 1 !important;
-  }
-
-  .me-line {
-    opacity: 1 !important;
-    transform: none !important;
+  .me-card-title {
+    font-size: clamp(24px, 5vw, 32px);
   }
 
   .me-checklist {
@@ -2024,20 +1822,17 @@ footer {
     padding: 5rem 1rem 4rem;
   }
 
-  .me-sticky {
-    padding: 48px 0;
+  .me-section {
+    padding: 60px 16px;
   }
 
-  .me-inner {
-    padding: 0 16px;
+  .me-card {
+    padding: 28px 22px;
+    border-radius: 16px;
   }
 
-  .me-v1 { margin-top: 24px; }
-  .me-s2 { margin-top: 40px; }
-  .me-v2 { margin-top: 24px; }
-
-  .me-statement {
-    font-size: clamp(24px, 7vw, 36px);
+  .me-card-title {
+    font-size: clamp(22px, 6vw, 28px);
   }
 
   .me-checklist {
@@ -2223,17 +2018,17 @@ nav.nav-scrolled .nav-right button[type="button"]:hover {
   color: var(--sprout);
 }
 
-/* Vault scroll header */
-.dark .vault-scroll-section {
-  background: var(--background);
-}
-
 /* Market & Economics */
-.dark .me-scroll-container {
+.dark .me-section {
   background: var(--background);
 }
 
-.dark .me-statement {
+.dark .me-card {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark .me-card-title {
   color: var(--foreground);
 }
 

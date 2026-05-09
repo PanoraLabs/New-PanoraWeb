@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 
@@ -31,7 +31,6 @@ const ROTATE_INTERVAL = 5000
 
 export function Hero({ ready }: { ready: boolean }) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const { scrollY } = useScroll()
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -40,21 +39,11 @@ export function Hero({ ready }: { ready: boolean }) {
     return () => clearInterval(timer)
   }, [])
 
-  // Parallax driven by raw scroll pixels (over first viewport height)
-  const bgY = useTransform(scrollY, [0, 800], [0, 200])
-  const bgScale = useTransform(scrollY, [0, 800], [1, 1.08])
-  const contentY = useTransform(scrollY, [0, 600], [0, -60])
-  const contentOpacity = useTransform(scrollY, [0, 500], [1, 0])
-
   return (
     <>
-      {/* Fixed hero — always behind everything */}
+      {/* Fixed hero — image stays put; the next section slides over it */}
       <section id="hero">
-        {/* Background image — parallax layer */}
-        <motion.div
-          className="hero-parallax-layer"
-          style={{ y: bgY, scale: bgScale }}
-        >
+        <div className="hero-parallax-layer">
           {heroImages.map((src, i) => (
             <motion.div
               key={src}
@@ -72,15 +61,12 @@ export function Hero({ ready }: { ready: boolean }) {
               />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
         <div className="hero-top-gradient" />
         <div className="hero-overlay" />
 
         {/* Bottom content bar — split left/right */}
-        <motion.div
-          className="hero-bottom"
-          style={{ y: contentY, opacity: contentOpacity }}
-        >
+        <div className="hero-bottom">
           {/* Left: large title */}
           <div className="hero-left">
             <h1 className="hero-title">
@@ -130,7 +116,7 @@ export function Hero({ ready }: { ready: boolean }) {
               </motion.p>
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Spacer so content below starts after the viewport */}

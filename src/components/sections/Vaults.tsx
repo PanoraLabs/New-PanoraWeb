@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 
@@ -31,6 +31,74 @@ const vaults = [
   },
 ] as const
 
+function useIsMobile(breakpoint = 901) {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`)
+    setIsMobile(mql.matches)
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    mql.addEventListener("change", handler)
+    return () => mql.removeEventListener("change", handler)
+  }, [breakpoint])
+  return isMobile
+}
+
+/* ─── Mobile: stacked cards ─── */
+function MobileVaults() {
+  return (
+    <section id="vaults" className="vault-mobile-section">
+      <div className="vault-mobile-header">
+        <div className="section-label">Product</div>
+        <h2 className="section-title">
+          Three vault <em>strategies</em>
+        </h2>
+        <p className="section-sub">
+          Pick your risk profile. All secured by smart contracts and
+          Proof-of-Activity.
+        </p>
+      </div>
+
+      <div className="vault-mobile-list">
+        {vaults.map((vault, i) => (
+          <motion.div
+            key={vault.title}
+            className="vault-mobile-card"
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+          >
+            <div className="vault-mobile-image">
+              <Image
+                src={vault.image}
+                alt={vault.title}
+                fill
+                className="vault-image-photo"
+              />
+            </div>
+            <div className="vault-mobile-info">
+              <div className="vault-name">{vault.name}</div>
+              <h3 className="vault-mobile-title">{vault.title}</h3>
+              <p className="vault-mobile-desc">{vault.desc}</p>
+              <div className="vault-meta">
+                <div>
+                  <div className="vm-label">Est. Return</div>
+                  <div className="vm-val">{vault.returnVal}</div>
+                </div>
+                <div>
+                  <div className="vm-label">Duration</div>
+                  <div className="vm-val">{vault.duration}</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+/* ─── Desktop: scroll-driven ─── */
 function VaultContent({
   vault,
   index,
@@ -45,7 +113,6 @@ function VaultContent({
   const start = index * segmentSize
   const end = start + segmentSize
 
-  // Fade in during first 30% of segment, stay visible, fade out during last 20%
   const fadeIn = start + segmentSize * 0.05
   const fadeOut = end - segmentSize * 0.15
 
@@ -106,7 +173,7 @@ function VaultProgress({
   )
 }
 
-export function Vaults() {
+function DesktopVaults() {
   const sectionRef = useRef<HTMLElement>(null)
 
   const { scrollYProgress } = useScroll({
@@ -116,7 +183,6 @@ export function Vaults() {
 
   return (
     <section id="vaults" ref={sectionRef} className="vault-scroll-section">
-      {/* Header - sits above the sticky area */}
       <div className="vault-scroll-header">
         <div className="vault-scroll-header-text">
           <div className="section-label">Product</div>
@@ -137,7 +203,6 @@ export function Vaults() {
         <div className="vaults-bg-circle2" />
 
         <div className="vault-scroll-layout">
-          {/* Content + images */}
           <div className="vault-scroll-bottom">
             <div className="vault-scroll-left">
               <div className="vault-scroll-cards-area">
@@ -191,4 +256,9 @@ export function Vaults() {
       </div>
     </section>
   )
+}
+
+export function Vaults() {
+  const isMobile = useIsMobile()
+  return isMobile ? <MobileVaults /> : <DesktopVaults />
 }

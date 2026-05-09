@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 const steps = [
   {
@@ -64,8 +64,93 @@ const steps = [
   },
 ] as const
 
-export function HowItWorks() {
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`)
+    setIsMobile(mql.matches)
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    mql.addEventListener("change", handler)
+    return () => mql.removeEventListener("change", handler)
+  }, [breakpoint])
+  return isMobile
+}
+
+/* ─── Mobile Accordion ─── */
+function MobileAccordion() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0)
+
+  return (
+    <section id="how" className="hiw-mobile-section">
+      <div className="hiw-mobile-header">
+        <div className="section-label">Process</div>
+        <h2 className="section-title">
+          From seed to <em>settlement</em>
+        </h2>
+        <p className="section-sub">Five on-chain steps, zero middlemen.</p>
+      </div>
+
+      <div className="hiw-accordion-list">
+        {steps.map((step, i) => {
+          const isOpen = openIndex === i
+          return (
+            <div key={step.n} className="hiw-accordion-item">
+              <button
+                className={`hiw-accordion-trigger${isOpen ? " hiw-accordion-trigger--open" : ""}`}
+                onClick={() => setOpenIndex(isOpen ? null : i)}
+                type="button"
+                aria-expanded={isOpen}
+              >
+                <div className="hiw-accordion-left">
+                  <span className="hiw-accordion-num">0{step.n}</span>
+                  <span className="hiw-accordion-title">{step.title}</span>
+                </div>
+                <div className="hiw-accordion-icon-wrap">
+                  {step.icon}
+                </div>
+              </button>
+
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    className="hiw-accordion-body"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  >
+                    <div className="hiw-accordion-content">
+                      <p className="hiw-accordion-desc">{step.desc}</p>
+                      <div className="hiw-accordion-meta">
+                        <div className="hiw-accordion-meta-item">
+                          <span className="hiw-accordion-meta-val">{step.n}/{steps.length}</span>
+                          <span className="hiw-accordion-meta-label">Progress</span>
+                        </div>
+                        <div className="hiw-accordion-meta-item">
+                          <span className="hiw-accordion-meta-val">On-chain</span>
+                          <span className="hiw-accordion-meta-label">Execution</span>
+                        </div>
+                        <div className="hiw-accordion-meta-item">
+                          <span className="hiw-accordion-meta-val">Automated</span>
+                          <span className="hiw-accordion-meta-label">Settlement</span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
+/* ─── Desktop Horizontal Scroll ─── */
+function DesktopScroll() {
   const sectionRef = useRef<HTMLElement>(null)
+  const headerRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
   const [animatedPanels, setAnimatedPanels] = useState<Set<number>>(new Set([0]))
   const PANELS = steps.length
@@ -73,10 +158,14 @@ export function HowItWorks() {
   useEffect(() => {
     function onScroll() {
       const section = sectionRef.current
-      if (!section) return
+      const header = headerRef.current
+      if (!section || !header) return
       const rect = section.getBoundingClientRect()
-      const scrollable = section.offsetHeight - window.innerHeight
-      const p = Math.max(0, Math.min(1, -rect.top / scrollable))
+      const headerHeight = header.offsetHeight
+      // Only start horizontal scroll after the header has scrolled away
+      const scrolled = -rect.top - headerHeight
+      const scrollable = section.offsetHeight - window.innerHeight - headerHeight
+      const p = Math.max(0, Math.min(1, scrolled / scrollable))
       setProgress(p)
     }
 
@@ -99,8 +188,7 @@ export function HowItWorks() {
 
   return (
     <section id="how" ref={sectionRef} className="hiw-section">
-      {/* Header - sits above the sticky area */}
-      <div className="hiw-header">
+      <div ref={headerRef} className="hiw-header">
         <div className="section-label">Process</div>
         <h2 className="section-title">
           From seed to <em>settlement</em>
@@ -109,10 +197,8 @@ export function HowItWorks() {
       </div>
 
       <div className="hiw-sticky">
-        {/* Progress bar */}
         <div className="hiw-progress" style={{ width: `${progress * 100}%` }} />
 
-        {/* Nav dots */}
         <div className="hiw-nav">
           {steps.map((step, i) => (
             <div
@@ -124,17 +210,14 @@ export function HowItWorks() {
           ))}
         </div>
 
-        {/* Horizontal track */}
         <div
           className="hiw-track"
           style={{ transform: `translateX(-${translateX}vw)` }}
         >
           {steps.map((step, i) => (
             <div key={step.n} className="hiw-panel">
-              {/* Ghost number */}
               <div className="hiw-ghost">{step.n}</div>
 
-              {/* Left: visual */}
               <div className="hiw-visual">
                 <div className="hiw-icon-wrap">
                   {step.icon}
@@ -157,7 +240,6 @@ export function HowItWorks() {
                 )}
               </div>
 
-              {/* Right: editorial */}
               <div className="hiw-editorial">
                 <p className="hiw-eyebrow">Step {step.n} of {PANELS}</p>
                 <motion.span
@@ -170,7 +252,6 @@ export function HowItWorks() {
                 </motion.span>
                 <p className="hiw-panel-desc">{step.desc}</p>
 
-                {/* Step stat-like info */}
                 <div className="hiw-step-meta">
                   <div className="hiw-meta-item">
                     <span className="hiw-meta-val">{step.n}/{PANELS}</span>
@@ -192,4 +273,9 @@ export function HowItWorks() {
       </div>
     </section>
   )
+}
+
+export function HowItWorks() {
+  const isMobile = useIsMobile()
+  return isMobile ? <MobileAccordion /> : <DesktopScroll />
 }

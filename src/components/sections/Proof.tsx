@@ -4,9 +4,9 @@ import Image from "next/image"
 import { Marquee } from "@/components/ui/marquee"
 
 const logos = [
-  { name: "Solana", src: "/LOGO/solana.png", h: 120 },
-  { name: "Metaplex", src: "/LOGO/metaplex.webp", h: 150 },
-  { name: "Bulog", src: "/LOGO/bulog.png", h: 48 },
+  { name: "Solana", src: "/LOGO/solana.png", h: 64 },
+  { name: "Metaplex", src: "/LOGO/metaplex.webp", h: 72 },
+  { name: "Bulog", src: "/LOGO/bulog.png", h: 32 },
 ] as const
 
 export function Proof() {

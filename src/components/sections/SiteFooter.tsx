@@ -24,25 +24,27 @@ export function SiteFooter() {
   return (
     <footer>
       <div className="footer-top">
-        <div>
+        <div className="footer-brand">
           <div className="footer-brand-name">Panora Labs</div>
           <p className="footer-brand-desc">
             Climate-Smart RWA Agriculture Infrastructure. Building the financial
             rails for Indonesia&apos;s farmers on Solana.
           </p>
         </div>
-        {columns.map(({ title, links }) => (
-          <div key={title}>
-            <div className="footer-col-title">{title}</div>
-            <ul className="footer-links">
-              {links.map((label) => (
-                <li key={label}>
-                  <Link href="#">{label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <div className="footer-columns">
+          {columns.map(({ title, links }) => (
+            <div key={title}>
+              <div className="footer-col-title">{title}</div>
+              <ul className="footer-links">
+                {links.map((label) => (
+                  <li key={label}>
+                    <Link href="#">{label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="footer-bottom">
         <span className="footer-copy">© 2026 Panora Labs. All rights reserved.</span>

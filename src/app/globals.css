@@ -521,7 +521,7 @@ nav.nav-scrolled {
 }
 
 .hiw-header {
-  padding: 160px 60px 80px;
+  padding: 160px 60px 40px;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -791,88 +791,200 @@ nav.nav-scrolled {
   font-weight: 300;
 }
 
-/* Mobile responsive for How It Works */
-@media (max-width: 767px) {
-  .hiw-section {
-    height: 400vh;
+/* ── HOW IT WORKS — Mobile Accordion ── */
+.hiw-mobile-section {
+  background: var(--cream);
+  padding: 80px 24px 96px;
+}
+
+.hiw-mobile-header {
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+
+.hiw-accordion-list {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.hiw-accordion-item {
+  border-top: 1px solid rgba(13, 43, 26, 0.1);
+}
+
+.hiw-accordion-item:last-child {
+  border-bottom: 1px solid rgba(13, 43, 26, 0.1);
+}
+
+.hiw-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--sans);
+  transition: opacity 0.2s;
+}
+
+.hiw-accordion-trigger:hover {
+  opacity: 0.7;
+}
+
+.hiw-accordion-left {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.hiw-accordion-num {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--stone);
+  flex-shrink: 0;
+}
+
+.hiw-accordion-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 6vw, 32px);
+  color: var(--forest);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.hiw-accordion-trigger--open .hiw-accordion-title {
+  color: var(--leaf);
+}
+
+.hiw-accordion-icon-wrap {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.hiw-accordion-trigger--open .hiw-accordion-icon-wrap {
+  opacity: 1;
+}
+
+.hiw-accordion-icon-wrap .hiw-icon-svg {
+  width: 36px;
+  height: 36px;
+}
+
+.hiw-accordion-body {
+  overflow: hidden;
+}
+
+.hiw-accordion-content {
+  padding: 0 0 24px;
+  padding-left: 36px;
+}
+
+.hiw-accordion-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--stone);
+  margin-bottom: 20px;
+}
+
+.hiw-accordion-meta {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba(13, 43, 26, 0.08);
+}
+
+.hiw-accordion-meta-item {
+  padding: 12px 16px 12px 0;
+  margin-right: 12px;
+  border-right: 1px solid rgba(13, 43, 26, 0.06);
+}
+
+.hiw-accordion-meta-item:last-child {
+  border-right: none;
+  margin-right: 0;
+}
+
+.hiw-accordion-meta-val {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--forest);
+  display: block;
+  line-height: 1;
+}
+
+.hiw-accordion-meta-label {
+  font-family: var(--sans);
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  color: var(--stone);
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Dark mode */
+.dark .hiw-mobile-section {
+  background: var(--background);
+}
+
+.dark .hiw-accordion-item {
+  border-color: rgba(93, 187, 122, 0.12);
+}
+
+.dark .hiw-accordion-title {
+  color: var(--foreground);
+}
+
+.dark .hiw-accordion-trigger--open .hiw-accordion-title {
+  color: var(--sprout);
+}
+
+.dark .hiw-accordion-desc {
+  color: var(--muted-foreground);
+}
+
+.dark .hiw-accordion-meta {
+  border-top-color: rgba(93, 187, 122, 0.1);
+}
+
+.dark .hiw-accordion-meta-item {
+  border-right-color: rgba(93, 187, 122, 0.08);
+}
+
+.dark .hiw-accordion-meta-val {
+  color: var(--foreground);
+}
+
+@media (max-width: 480px) {
+  .hiw-mobile-section {
+    padding: 60px 16px 72px;
   }
 
-  .hiw-header {
-    padding: 80px 24px 48px;
+  .hiw-accordion-content {
+    padding-left: 28px;
   }
 
-  .hiw-panel {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    padding: 5rem 1.5rem 4rem;
-    gap: 1rem;
-    align-items: start;
+  .hiw-accordion-desc {
+    font-size: 14px;
   }
 
-  .hiw-visual {
-    order: 2;
-    padding: 0;
-    height: auto;
+  .hiw-accordion-meta-item {
+    padding: 10px 12px 10px 0;
+    margin-right: 8px;
   }
 
-  .hiw-icon-wrap {
-    width: 100px;
-    height: 100px;
+  .hiw-accordion-meta-val {
+    font-size: 0.95rem;
   }
-
-  .hiw-icon-wrap::before { inset: -12px; }
-  .hiw-icon-wrap::after { inset: -24px; }
-
-  .hiw-icon-svg {
-    width: 40px;
-    height: 40px;
-  }
-
-  .hiw-editorial {
-    order: 1;
-  }
-
-  .hiw-eyebrow {
-    font-size: 0.65rem;
-    margin-bottom: 0.6rem;
-  }
-
-  .hiw-panel-title {
-    font-size: clamp(3rem, 14vw, 5rem);
-  }
-
-  .hiw-panel-desc {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    margin-top: 0.8rem;
-    max-width: 100%;
-  }
-
-  .hiw-meta-item {
-    padding: 0.6rem 1rem 0.6rem 0;
-    margin-right: 0.8rem;
-  }
-
-  .hiw-meta-val { font-size: 1.2rem; }
-  .hiw-meta-label { font-size: 0.55rem; }
-
-  .hiw-nav {
-    bottom: 1.5rem;
-    gap: 1rem;
-  }
-
-  .hiw-nav-dot { font-size: 0.6rem; letter-spacing: 0.1em; }
-
-  .hiw-ghost {
-    font-size: 55vw;
-    right: auto;
-    left: -2vw;
-    bottom: auto;
-    top: 2vh;
-  }
-
-  .hiw-flow-line { display: none; }
-  .hiw-flow-arrow { display: none; }
 }
 
 /* ── PRODUCTS / VAULTS (scroll-driven) ── */
@@ -1087,6 +1199,110 @@ nav.nav-scrolled {
   color: var(--sprout);
 }
 
+/* ── VAULTS — Mobile Cards ── */
+.vault-mobile-section {
+  background: var(--forest);
+  padding: 80px 24px 96px;
+}
+
+.vault-mobile-header {
+  margin-bottom: 48px;
+}
+
+.vault-mobile-header .section-title {
+  color: var(--white);
+}
+
+.vault-mobile-header .section-sub {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.vault-mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.vault-mobile-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vault-mobile-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.vault-mobile-image .vault-image-photo {
+  border-radius: 0;
+}
+
+.vault-mobile-info {
+  padding: 24px;
+}
+
+.vault-mobile-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.vault-mobile-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.vault-mobile-card .vault-name {
+  margin-bottom: 8px;
+}
+
+.vault-mobile-card .vault-meta {
+  gap: 32px;
+}
+
+.vault-mobile-card .vm-val {
+  font-size: 18px;
+}
+
+/* Dark mode */
+.dark .vault-mobile-section {
+  background: var(--secondary);
+}
+
+.dark .vault-mobile-header .section-title {
+  color: var(--foreground);
+}
+
+.dark .vault-mobile-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(93, 187, 122, 0.1);
+}
+
+@media (max-width: 480px) {
+  .vault-mobile-section {
+    padding: 60px 16px 72px;
+  }
+
+  .vault-mobile-title {
+    font-size: 24px;
+  }
+
+  .vault-mobile-info {
+    padding: 20px;
+  }
+
+  .vault-mobile-desc {
+    font-size: 13px;
+  }
+}
+
 /* ── MERGED MARKET + ECONOMICS (scrollytelling) ── */
 .me-scroll-container {
   background: var(--cream);
@@ -1107,16 +1323,40 @@ nav.nav-scrolled {
 .me-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  column-gap: 80px;
   max-width: 1200px;
   width: 100%;
   padding: 0 60px;
   align-items: center;
 }
 
-/* ── LEFT: single text block, lines dim/highlight ── */
-.me-left {
+/* Desktop grid: statements left, visuals right (overlapping for crossfade) */
+.me-s1 {
+  grid-column: 1;
+  grid-row: 1 / 3;
   display: flex;
+  align-items: center;
+}
+
+.me-s2 {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: flex;
+  align-items: center;
+}
+
+.me-v1 {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  align-items: center;
+}
+
+.me-v2 {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  align-items: center;
 }
 
 .me-statement {
@@ -1135,28 +1375,6 @@ nav.nav-scrolled {
 
 .me-line {
   display: block;
-}
-
-/* ── RIGHT: visuals only ── */
-.me-right {
-  position: relative;
-  min-height: 480px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.me-vis {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.me-vis-abs {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
 }
 
 /* checklist */
@@ -1251,12 +1469,12 @@ nav.nav-scrolled {
 /* ── PROOF / TRUST ── */
 #proof {
   background: var(--mist);
-  padding: 80px 60px;
+  padding: 40px 60px;
   text-align: center;
 }
 
 .proof-section {
-  padding: 20px 0;
+  padding: 12px 0;
   overflow: hidden;
 }
 
@@ -1298,10 +1516,10 @@ nav.nav-scrolled {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
+  height: 40px;
   opacity: 0.6;
   transition: opacity 0.2s;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
 .proof-logo:hover {
@@ -1470,16 +1688,26 @@ nav.nav-scrolled {
 /* ── FOOTER ── */
 footer {
   background: var(--ink);
-  padding: 80px 60px 40px;
+  padding: 48px 60px 32px;
 }
 
 .footer-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  display: flex;
   gap: 60px;
-  margin-bottom: 60px;
-  padding-bottom: 60px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-brand {
+  flex: 1;
+  min-width: 0;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 48px;
 }
 
 .footer-brand-name {
@@ -1565,6 +1793,10 @@ footer {
     padding: 16px 24px;
   }
 
+  .nav-logo img {
+    height: 38px !important;
+  }
+
   .nav-links {
     display: none;
   }
@@ -1584,6 +1816,10 @@ footer {
     flex-wrap: wrap;
   }
 
+  .hero-description {
+    font-size: 14px;
+  }
+
   #stats {
     padding: 60px 24px;
   }
@@ -1594,41 +1830,25 @@ footer {
     gap: 16px;
   }
 
-  /* old #how responsive removed — handled in .hiw-section mobile block */
-
-  .vault-scroll-section {
-    height: 350vh;
+  /* About Panora */
+  .about-panora {
+    padding: 80px 24px;
   }
 
-  .vault-scroll-layout {
-    gap: 24px;
-    padding: 0 24px;
+  .about-panora-tag {
+    margin-bottom: 32px;
   }
 
-  .vault-scroll-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 80px 24px 48px;
+  .about-panora-text {
+    font-size: clamp(24px, 6vw, 36px);
+    margin-bottom: 32px;
   }
 
-  .vault-header-sub {
-    max-width: 100%;
+  .vm-val {
+    font-size: 18px;
   }
 
-  .vault-scroll-bottom {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .vault-scroll-right {
-    display: none;
-  }
-
-  .vault-scroll-title {
-    font-size: 32px;
-  }
-
+  /* Market Economics — mobile: interleave statements with visuals */
   .me-scroll-container {
     height: auto;
   }
@@ -1636,43 +1856,264 @@ footer {
   .me-sticky {
     position: static;
     height: auto;
-    padding: 80px 0;
+    padding: 60px 0;
   }
 
   .me-inner {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 0;
     padding: 0 24px;
   }
 
-  .me-statement {
-    font-size: clamp(32px, 8vw, 48px);
-    opacity: 1 !important;
-  }
-
-  .me-right {
-    min-height: unset;
-    flex-direction: column;
-    gap: 48px;
-  }
-
-  .me-vis,
-  .me-vis-abs {
-    position: static;
+  .me-s1,
+  .me-s2,
+  .me-v1,
+  .me-v2 {
+    grid-column: 1;
+    grid-row: auto;
     opacity: 1 !important;
     transform: none !important;
   }
 
+  .me-s1 { order: 1; }
+  .me-v1 { order: 2; margin-top: 32px; }
+  .me-s2 { order: 3; margin-top: 48px; }
+  .me-v2 { order: 4; margin-top: 32px; }
+
+  .me-s1,
+  .me-s2 {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .me-statement {
+    font-size: clamp(28px, 7vw, 42px);
+    opacity: 1 !important;
+  }
+
+  .me-line {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .me-checklist {
+    gap: 20px;
+  }
+
+  .me-checklist li {
+    font-size: 14px;
+    gap: 12px;
+    line-height: 1.45;
+  }
+
+  .me-check-icon {
+    font-size: 18px;
+  }
+
+  .me-split-row {
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .me-donut {
+    width: 180px;
+    height: 180px;
+  }
+
+  .me-dc-val {
+    font-size: 28px;
+  }
+
+  .me-dc-label {
+    font-size: 11px;
+  }
+
+  .me-pct-col {
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .me-pct-item {
+    text-align: center;
+    min-width: 80px;
+  }
+
+  .me-pct-val {
+    font-size: 24px;
+  }
+
+  .me-pct-label {
+    font-size: 13px;
+  }
+
+  /* Footer */
   footer {
     padding: 60px 24px 32px;
   }
 
   .footer-top {
-    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+  }
+
+  .footer-columns {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .footer-links {
+    gap: 8px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+  }
+
+  .footer-col-title {
+    margin-bottom: 14px;
   }
 
   #proof {
-    padding: 60px 24px;
+    padding: 28px 24px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  nav {
+    padding: 14px 16px;
+  }
+
+  .nav-logo img {
+    height: 32px !important;
+  }
+
+  .hero-bottom {
+    padding: 0 16px 36px;
+    gap: 20px;
+  }
+
+  .hero-title {
+    font-size: clamp(36px, 10vw, 52px);
+  }
+
+  .hero-glass-btn {
+    height: 38px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  .about-panora {
+    padding: 60px 16px;
+  }
+
+  .about-panora-text {
+    font-size: 22px;
+  }
+
+  .hiw-header {
+    padding: 60px 16px 36px;
+  }
+
+  .hiw-panel {
+    padding: 5rem 1rem 4rem;
+  }
+
+  .me-sticky {
+    padding: 48px 0;
+  }
+
+  .me-inner {
+    padding: 0 16px;
+  }
+
+  .me-v1 { margin-top: 24px; }
+  .me-s2 { margin-top: 40px; }
+  .me-v2 { margin-top: 24px; }
+
+  .me-statement {
+    font-size: clamp(24px, 7vw, 36px);
+  }
+
+  .me-checklist {
+    gap: 16px;
+  }
+
+  .me-checklist li {
+    font-size: 13px;
+    gap: 10px;
+  }
+
+  .me-check-icon {
+    font-size: 16px;
+  }
+
+  .me-donut {
+    width: 140px;
+    height: 140px;
+  }
+
+  .me-dc-val {
+    font-size: 20px;
+  }
+
+  .me-dc-label {
+    font-size: 10px;
+  }
+
+  .me-pct-col {
+    gap: 16px;
+  }
+
+  .me-pct-val {
+    font-size: 20px;
+  }
+
+  .me-pct-label {
+    font-size: 12px;
+  }
+
+  .me-split-row {
+    gap: 20px;
+  }
+
+  .faq-section {
+    padding: 60px 16px;
+  }
+
+  .footer-columns {
+    gap: 16px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+
+  .footer-col-title {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+
+  footer {
+    padding: 40px 16px 24px;
+  }
+
+  #proof {
+    padding: 20px 16px;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .section-sub {
+    font-size: 15px;
+    margin-bottom: 40px;
   }
 }
 

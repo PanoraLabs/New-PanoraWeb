@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 
 const steps = [
@@ -8,61 +9,45 @@ const steps = [
     n: "1",
     title: "Stake",
     desc: "Deposit USDC into a Vault. Receive a Participation Token as proof of your position in the harvest cycle.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="hiw-icon-svg">
-        <circle cx="24" cy="24" r="20" stroke="var(--leaf)" strokeWidth="1.5" opacity="0.3" />
-        <circle cx="24" cy="24" r="12" stroke="var(--leaf)" strokeWidth="1.5" opacity="0.6" />
-        <path d="M24 16v16M18 24h12" stroke="var(--sprout)" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
+    image: "/HowItWorks/stake.jpg",
   },
   {
     n: "2",
     title: "Activate",
     desc: "Node Agent verifies field readiness with geotagged photos and on-the-ground confirmation before capital is deployed.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="hiw-icon-svg">
-        <rect x="8" y="8" width="32" height="32" rx="4" stroke="var(--leaf)" strokeWidth="1.5" opacity="0.3" />
-        <path d="M16 24l5 5 11-11" stroke="var(--sprout)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
+    image: "/HowItWorks/activate.jpg",
   },
   {
     n: "3",
     title: "Grow",
     desc: "Track live IoT sensor data and milestone-based disbursements in real time through the Panora dashboard.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="hiw-icon-svg">
-        <path d="M12 36V28M20 36V22M28 36V18M36 36V12" stroke="var(--sprout)" strokeWidth="2" strokeLinecap="round" />
-        <path d="M8 40h32" stroke="var(--leaf)" strokeWidth="1.5" opacity="0.3" />
-      </svg>
-    ),
+    image: "/HowItWorks/grow.jpg",
   },
   {
     n: "4",
     title: "Harvest",
     desc: "Off-taker pays directly to the Panora smart contract at market price upon successful harvest completion.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="hiw-icon-svg">
-        <path d="M24 8c0 12-12 16-12 28h24c0-12-12-16-12-28z" stroke="var(--leaf)" strokeWidth="1.5" opacity="0.4" />
-        <path d="M24 14c0 8-7 11-7 20h14c0-9-7-12-7-20z" stroke="var(--sprout)" strokeWidth="1.5" />
-      </svg>
-    ),
+    image: "/HowItWorks/harvest.jpg",
   },
   {
     n: "5",
     title: "Claim",
     desc: "Receive 100% of your principal plus up to 35% net profit, settled directly to your connected wallet.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="hiw-icon-svg">
-        <circle cx="24" cy="24" r="16" stroke="var(--leaf)" strokeWidth="1.5" opacity="0.3" />
-        <path d="M24 14v20" stroke="var(--sprout)" strokeWidth="2" strokeLinecap="round" />
-        <path d="M18 20h12c0 0 2 0 2 2s-2 2-2 2H18" stroke="var(--sprout)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M18 28h12c0 0 2 0 2 2s-2 2-2 2H18" stroke="var(--sprout)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
-      </svg>
-    ),
+    image: "/HowItWorks/claim.jpg",
   },
 ] as const
+
+function StepIcon({ src, alt, sizes }: { src: string; alt: string; sizes: string }) {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes={sizes}
+      className="hiw-icon-img"
+    />
+  )
+}
 
 function useIsMobile(breakpoint = 768) {
   const [isMobile, setIsMobile] = useState(false)
@@ -106,7 +91,7 @@ function MobileAccordion() {
                   <span className="hiw-accordion-title">{step.title}</span>
                 </div>
                 <div className="hiw-accordion-icon-wrap">
-                  {step.icon}
+                  <StepIcon src={step.image} alt={step.title} sizes="64px" />
                 </div>
               </button>
 
@@ -220,7 +205,7 @@ function DesktopScroll() {
 
               <div className="hiw-visual">
                 <div className="hiw-icon-wrap">
-                  {step.icon}
+                  <StepIcon src={step.image} alt={step.title} sizes="(max-width: 768px) 220px, 340px" />
                 </div>
                 <div className="hiw-flow-line">
                   {Array.from({ length: 5 }).map((_, j) => (

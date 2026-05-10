@@ -4,7 +4,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 
 export function Nav() {
   return (
@@ -28,9 +27,8 @@ export function Nav() {
         </Link>
       </div>
 
-      {/* Right: CTA + theme toggle */}
+      {/* Right: CTA */}
       <div className="nav-right">
-        <AnimatedThemeToggler className="mr-3 flex h-10 w-10 items-center justify-center rounded-full text-white/70 transition-colors hover:text-white" />
         <Button variant="hero-cta" size="nav" asChild>
           <Link href="#vaults">
             Explore Vaults

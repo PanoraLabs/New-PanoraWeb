@@ -624,8 +624,8 @@ nav.nav-scrolled {
 }
 
 .hiw-icon-wrap {
-  width: clamp(160px, 18vw, 240px);
-  height: clamp(160px, 18vw, 240px);
+  width: clamp(220px, 26vw, 340px);
+  height: clamp(220px, 26vw, 340px);
   border-radius: 50%;
   border: 1px solid rgba(13, 43, 26, 0.08);
   background: rgba(255, 255, 255, 0.5);
@@ -654,6 +654,21 @@ nav.nav-scrolled {
 .hiw-icon-svg {
   width: 64px;
   height: 64px;
+}
+
+.hiw-icon-wrap {
+  overflow: hidden;
+}
+
+.hiw-icon-img {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hiw-accordion-icon-wrap {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .hiw-flow-line {
@@ -862,8 +877,8 @@ nav.nav-scrolled {
 }
 
 .hiw-accordion-icon-wrap {
-  width: 36px;
-  height: 36px;
+  width: 56px;
+  height: 56px;
   flex-shrink: 0;
   opacity: 0.5;
   transition: opacity 0.3s;
@@ -874,8 +889,8 @@ nav.nav-scrolled {
 }
 
 .hiw-accordion-icon-wrap .hiw-icon-svg {
-  width: 36px;
-  height: 36px;
+  width: 56px;
+  height: 56px;
 }
 
 .hiw-accordion-body {

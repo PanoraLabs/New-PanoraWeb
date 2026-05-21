@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
+    "dev:farm": "npm --prefix farm-app run dev",
+    "build:farm": "npm --prefix farm-app ci && npm --prefix farm-app run build && rm -rf public/app && cp -r farm-app/dist public/app",
+    "prebuild": "npm run build:farm",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint"

@@ -1,0 +1,73 @@
+import { motion } from 'framer-motion'
+import { TopNav } from '@/components/layout/TopNav'
+import { useAppStore } from '@/store/app-store'
+import { useMarketListings } from '@/hooks/use-demo'
+import { useDemoStore } from '@/store/demo-store'
+import { MarketListingRow } from '@/components/shared/MarketListingRow'
+import { staggerContainer, staggerItem } from '@/motion/variants'
+import { formatUsdCompact, parseUsd } from '@/lib/format'
+
+export function MarketScreen() {
+  const { openSheet, showResult, showToast } = useAppStore()
+  const listings = useMarketListings()
+  const cancelListing = useDemoStore((s) => s.cancelListing)
+  const totalVolumeUsd = listings.reduce((sum, l) => sum + parseUsd(l.price), 0)
+
+  return (
+    <div className="flex flex-col h-full bg-surface">
+      <TopNav title="Trade Vault Shares" showBack={false} action={{ label: 'Sell mine', onClick: () => openSheet('sell') }} />
+      <div className="flex-1 overflow-y-auto hide-scrollbar">
+        <div className="px-[22px] lg:px-8 xl:px-10 max-w-6xl mx-auto w-full pt-[18px] lg:pt-8">
+          {/* Summary bar */}
+          <div className="bg-forest rounded-[14px] px-4 py-3.5 mb-4 flex items-center justify-between">
+            <div>
+              <div className="text-[11px] text-white/40 mb-0.5 flex items-center">
+                <span className="live-dot inline-block w-1.5 h-1.5 rounded-full bg-sprout mr-1 align-middle" />
+                Live now
+              </div>
+              <div className="text-[15px] font-semibold text-white">
+                <span className="font-serif text-[17px]">{listings.length}</span> shares for sale
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="text-[10px] text-white/40 mb-0.5">Listed volume</div>
+              <div className="font-serif text-base text-sprout">
+                {totalVolumeUsd > 0 ? formatUsdCompact(totalVolumeUsd) : '$0'}
+              </div>
+            </div>
+          </div>
+
+          {/* Info card */}
+          <div className="bg-mist rounded-[14px] px-3.5 py-3.5 mb-4">
+            <div className="text-xs font-semibold text-leaf mb-1.5">What is this?</div>
+            <div className="text-[11px] text-moss leading-relaxed">
+              Need cash before harvest? Sell your vault share here. Want to buy in late? Pick one up below — prices reflect live crop health, but never drop below the original stake.
+            </div>
+          </div>
+
+          <div className="text-[15px] font-semibold text-forest mb-3">Available now</div>
+
+          <motion.div variants={staggerContainer} initial="initial" animate="animate">
+            {listings.map((l) => (
+              <motion.div key={l.code} variants={staggerItem}>
+                <MarketListingRow
+                  listing={l}
+                  onClick={() => openSheet('buy', { listingCode: l.code })}
+                  onCancel={() => {
+                    const result = cancelListing(l.code)
+                    if (!result.ok) {
+                      showResult({ kind: 'error', title: 'Cancel failed', message: result.reason })
+                      return
+                    }
+                    showToast(`Listing removed: ${l.code}`)
+                  }}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+          <div className="h-2" />
+        </div>
+      </div>
+    </div>
+  )
+}

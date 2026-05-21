@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Panora Labs — Marketing site + Farm app
 
-## Getting Started
+Next.js landing page ([new-panora.vercel.app](https://new-panora.vercel.app)) with the **Panora Farm** invest demo embedded at [`/app`](http://localhost:3000/app).
 
-First, run the development server:
+## Development
+
+**Terminal 1 — landing page**
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Terminal 2 — farm app (for Explore Vaults / Start Investing)**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev:farm
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000). Use **Explore Vaults** (nav) or **Start Investing** (hero) — both open `/app` with the farm UI.
 
-## Learn More
+## Production build
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`prebuild` builds `farm-app/` and copies output to `public/app/` for static hosting under `/app/*`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Structure
 
-## Deploy on Vercel
+| Path | Description |
+|------|-------------|
+| `src/` | Next.js marketing pages |
+| `src/app/app/` | Full-screen wrapper route → farm iframe |
+| `farm-app/` | Vite React demo (SEABW hackathon app) |
+| `public/app/` | Built farm assets (generated, gitignored) |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Links
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Farm demo source also published at [panorafarm-SEABW](https://github.com/TioEnth06/panorafarm-SEABW)

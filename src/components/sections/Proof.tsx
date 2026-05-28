@@ -5,8 +5,7 @@ import { Marquee } from "@/components/ui/marquee"
 
 const logos = [
   { name: "Solana", src: "/LOGO/solana.png", h: 64 },
-  { name: "Metaplex", src: "/LOGO/metaplex.webp", h: 72 },
-  { name: "Bulog", src: "/LOGO/bulog.png", h: 32 },
+  { name: "Metaplex", src: "/LOGO/metaplex.webp", h: 72 }
 ] as const
 
 export function Proof() {

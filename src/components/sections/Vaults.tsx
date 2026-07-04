@@ -15,7 +15,7 @@ const vaults = [
   {
     name: "Export RWA",
     title: "Traceable Exports",
-    desc: "Coffee, cacao, vanilla. Every batch minted as cNFT — full chain-of-custody from farm to foreign buyer. EUDR-ready by default.",
+    desc: "Coffee, cacao, vanilla. Every batch minted as a cNFT with full chain-of-custody from farm to foreign buyer. EUDR-ready by default.",
     returnVal: "TBA",
     duration: "6–9 months",
     image: "/coffee.jpg",

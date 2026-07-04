@@ -3,15 +3,15 @@
 import { useState } from "react"
 import {
   AboutPanora,
+  CTASection,
+  FAQ,
   Hero,
   HowItWorks,
   LoadingScreen,
+  MarketEconomics,
   Nav,
   Proof,
-  MarketEconomics,
-  FAQ,
   SiteFooter,
-  StatsBar,
   Vaults,
 } from "./sections"
 import { ScrollProgress } from "./ui/scroll-progress"
@@ -24,15 +24,15 @@ export function LandingPage() {
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       <ScrollProgress />
       <Nav />
-      <Hero ready={!loading} />
-      <main className="main-content">
+      <main>
+        <Hero ready={!loading} />
         <AboutPanora />
-        {/* <StatsBar /> */}
         <Proof />
         <HowItWorks />
         <Vaults />
         <MarketEconomics />
         <FAQ />
+        <CTASection />
         <SiteFooter />
       </main>
     </>

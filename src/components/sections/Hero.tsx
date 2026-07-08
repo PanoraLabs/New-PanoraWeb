@@ -34,25 +34,25 @@ export function Hero({ ready }: { ready: boolean }) {
   return (
     <section id="hero" className="hero">
       <h1 className="hero-title">
-        <SplitText text="Farm finance," animate={ready} delay={0.1} />
+        <SplitText text="Supply chains," animate={ready} delay={0.1} />
         <br />
         <span className="hero-title-accent">
-          <SplitText text="reinvented." animate={ready} delay={0.35} />
+          <SplitText text="made bulletproof." animate={ready} delay={0.35} />
         </span>
       </h1>
 
       <div className="hero-row">
         <motion.p className="hero-description" {...fadeUp(0.55, ready)}>
-          Panora connects global capital to verified Indonesian farmers.
-          Season-long vaults, milestone-based payouts, and every harvest
-          traceable on Solana.
+          Panora bridges smallholder farmers and global trading houses through
+          immutable digital product passports. First-mile traceability, EUDR
+          compliance, and capital safety, verified on Solana.
         </motion.p>
 
         <motion.div className="hero-buttons" {...fadeUp(0.65, ready)}>
           <Magnet padding={60} magnetStrength={6}>
             <Button variant="hero-cta" asChild>
-              <Link href="/app">
-                Explore vaults
+              <Link href="mailto:hello@panora.farm">
+                Request enterprise demo
                 <svg className="-mr-1" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -61,7 +61,7 @@ export function Hero({ ready }: { ready: boolean }) {
             </Button>
           </Magnet>
           <Button variant="hero-ghost" asChild>
-            <Link href="#how">See how it works</Link>
+            <Link href="/app">Launch console</Link>
           </Button>
         </motion.div>
       </div>
@@ -89,7 +89,7 @@ export function Hero({ ready }: { ready: boolean }) {
             >
               <Image
                 src={src}
-                alt="Greenhouse rows on a Panora partner farm in West Java"
+                alt="Smallholder partner farm in a Panora pilot corridor, Indonesia"
                 fill
                 priority={i === 0}
                 className="hero-bg-photo"
@@ -97,7 +97,7 @@ export function Hero({ ready }: { ready: boolean }) {
             </motion.div>
           ))}
         </motion.div>
-        <div className="hero-media-caption">Partner farms. Subang, West Java</div>
+        <div className="hero-media-caption">First-mile origins. Smallholder partner farms, Indonesia</div>
       </motion.div>
     </section>
   )

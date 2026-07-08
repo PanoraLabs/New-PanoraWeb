@@ -10,9 +10,9 @@ const hanken = Hanken_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Panora Labs — Climate-Smart Agriculture Infrastructure",
+  title: "Panora — First-Mile Traceability & EUDR Compliance",
   description:
-    "Panora Labs connects investors with verified Indonesian farmers through blockchain-powered vaults — transparent, traceable, and climate-resilient.",
+    "Panora bridges the gap between smallholder farmers and global trading houses through immutable digital product passports, ensuring bulletproof compliance and capital safety.",
 };
 
 export default function RootLayout({

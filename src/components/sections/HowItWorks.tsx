@@ -6,38 +6,38 @@ import Image from "next/image"
 const steps = [
   {
     n: "01",
-    title: "Stake",
-    desc: "Deposit USDC into a Vault. Receive a Participation Token as proof of your position in the harvest cycle.",
-    tag: "USDC in, Participation Token out",
-    image: "/HowItWorks/stake.jpg",
+    title: "Capture",
+    desc: "Field agents map every farm as a GPS polygon with sub-meter accuracy and enroll farmers with biometric KYC before harvest begins.",
+    tag: "Sub-meter GPS polygons",
+    image: "/hero.jpg",
   },
   {
     n: "02",
-    title: "Activate",
-    desc: "A Node Agent verifies field readiness with geotagged photos and on-the-ground confirmation before capital is deployed.",
-    tag: "Geotagged Proof-of-Activity",
-    image: "/HowItWorks/activate.jpg",
+    title: "Verify",
+    desc: "Harvest origin, farmer identity, and land boundaries are encrypted and timestamped at point-zero of production. Offline-first for remote field conditions.",
+    tag: "Cryptographic integrity",
+    image: "/padi.jpg",
   },
   {
     n: "03",
-    title: "Grow",
-    desc: "Track live IoT sensor data and milestone-based disbursements in real time through the Panora dashboard.",
-    tag: "Live IoT telemetry",
-    image: "/HowItWorks/grow.jpg",
+    title: "Mint",
+    desc: "Each commodity batch becomes a Digital Product Passport: a compressed NFT permanently encoding coordinates, certifications, and transaction history.",
+    tag: "Tamper-proof by design",
+    image: "/coffee.jpg",
   },
   {
     n: "04",
-    title: "Harvest",
-    desc: "The off-taker pays the Panora smart contract directly at market price when the harvest completes.",
-    tag: "Off-taker pays the contract",
-    image: "/HowItWorks/harvest.jpg",
+    title: "Move",
+    desc: "Sensor-equipped warehouses and GPS-tracked transport record every movement. QR check-ins validate chain-of-custody at each handoff.",
+    tag: "Warehouse and transport nodes",
+    image: "/hero1.jpg",
   },
   {
     n: "05",
-    title: "Claim",
-    desc: "Receive 100% of your principal plus up to 35% net profit, settled directly to your connected wallet.",
-    tag: "Principal + up to 35% net",
-    image: "/HowItWorks/claim.jpg",
+    title: "Report",
+    desc: "Headquarters monitors every batch in real time and generates audit-ready EUDR compliance reports with a single click.",
+    tag: "One-click EUDR reports",
+    image: "/hero3.jpg",
   },
 ] as const
 
@@ -64,11 +64,14 @@ export function HowItWorks() {
   return (
     <section id="how" className="process">
       <div className="process-header">
-        <div className="section-label">Process</div>
+        <div className="section-label">Chain of custody</div>
         <h2 className="section-title">
-          From seed to <em>settlement.</em>
+          From farm gate to <em>boardroom.</em>
         </h2>
-        <p className="section-sub">Five on-chain steps, zero middlemen.</p>
+        <p className="section-sub">
+          Five verified handoffs. Every data point auditable, tamper-proof,
+          instantly retrievable.
+        </p>
       </div>
 
       <div className="process-grid">

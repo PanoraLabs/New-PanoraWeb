@@ -8,7 +8,7 @@ export default function FarmAppPage() {
   return (
     <iframe
       src={src}
-      title="Panora — Explore Vaults"
+      title="Panora — Enterprise Console"
       className="w-full h-full border-0"
       allow="clipboard-read; clipboard-write"
     />

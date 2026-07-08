@@ -6,9 +6,10 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 
 const links = [
-  { label: "How it works", href: "#how" },
-  { label: "Vaults", href: "#vaults" },
-  { label: "Economics", href: "#economics" },
+  { label: "Why Panora", href: "#why" },
+  { label: "Chain of custody", href: "#how" },
+  { label: "Infrastructure", href: "#infrastructure" },
+  { label: "Technology", href: "#technology" },
   { label: "FAQ", href: "#faq" },
 ] as const
 
@@ -44,7 +45,7 @@ export function Nav() {
       <div className="nav-right">
         <Button variant="hero-cta" size="nav" asChild>
           <Link href="/app">
-            Explore vaults
+            Launch console
             <svg className="-mr-1" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

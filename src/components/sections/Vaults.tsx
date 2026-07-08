@@ -7,42 +7,48 @@ import { Parallax } from "@/components/ui/parallax"
 
 const vaults = [
   {
-    name: "High Value",
-    title: "Greenhouse Produce",
-    desc: "Chili, tomato, shallot. Climate-controlled greenhouses eliminate weather risk and ensure supply consistency for modern retailers.",
-    returnVal: "TBA",
-    duration: "90–110 days",
+    name: "Node 01",
+    title: "Field Agent Network",
+    desc: "The frontline application that turns field agents into verifiable data collectors. Polygonal land mapping, biometric farmer KYC, and encrypted capture at point-zero of production.",
+    meta: [
+      { label: "Mapping", val: "Sub-meter GPS" },
+      { label: "Enrollment", val: "Biometric KYC" },
+    ],
     image: "/chili.jpg",
   },
   {
-    name: "Export RWA",
-    title: "Traceable Exports",
-    desc: "Coffee, cacao, vanilla. Every batch minted as a cNFT with full chain-of-custody from farm to foreign buyer. EUDR-ready by default.",
-    returnVal: "TBA",
-    duration: "6–9 months",
+    name: "Node 02",
+    title: "Enterprise Console",
+    desc: "The command center for headquarters. Real-time supply chain visibility, EUDR document management, full batch provenance, and automated audit-ready reporting.",
+    meta: [
+      { label: "Visibility", val: "Real-time batches" },
+      { label: "Reporting", val: "Audit-ready" },
+    ],
     image: "/coffee.jpg",
   },
   {
-    name: "Bulk Commodity",
-    title: "Staple Crops",
-    desc: "Rice and corn at scale, backed by off-taker guarantees from Bulog and licensed warehouses. Lower yield, higher volume security.",
-    returnVal: "TBA",
-    duration: "4–5 months",
-    image: "/padi.jpg",
+    name: "Node 03",
+    title: "Logistical Nodes",
+    desc: "The connective tissue between farm and port. IoT sensors in warehouses, QR check-ins at collection points, and GPS fleet tracking link every movement to its passport.",
+    meta: [
+      { label: "Warehouse", val: "IoT sensors" },
+      { label: "Transport", val: "GPS fleet tracking" },
+    ],
+    image: "/hero2.jpg",
   },
 ] as const
 
 export function Vaults() {
   return (
-    <section id="vaults" className="vault-mobile-section">
+    <section id="infrastructure" className="vault-mobile-section">
       <div className="vault-mobile-header">
-        <div className="section-label">Product</div>
+        <div className="section-label">Infrastructure</div>
         <h2 className="section-title">
-          Three vault <em>strategies</em>
+          Three nodes. One <em>unbreakable</em> chain.
         </h2>
         <p className="section-sub">
-          Pick your risk profile. All secured by smart contracts and
-          Proof-of-Activity.
+          From the farmer&apos;s field to the corporate boardroom, every data
+          point flows through purpose-built infrastructure.
         </p>
       </div>
 
@@ -84,14 +90,12 @@ export function Vaults() {
               <h3 className="vault-mobile-title">{vault.title}</h3>
               <p className="vault-mobile-desc">{vault.desc}</p>
               <div className="vault-meta">
-                <div>
-                  <div className="vm-label">Est. Return</div>
-                  <div className="vm-val">{vault.returnVal}</div>
-                </div>
-                <div>
-                  <div className="vm-label">Duration</div>
-                  <div className="vm-val">{vault.duration}</div>
-                </div>
+                {vault.meta.map(({ label, val }) => (
+                  <div key={label}>
+                    <div className="vm-label">{label}</div>
+                    <div className="vm-val">{val}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>

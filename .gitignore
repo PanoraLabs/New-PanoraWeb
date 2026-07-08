@@ -19,9 +19,6 @@
 
 # production
 /build
-/farm-app/node_modules
-/farm-app/dist
-/public/app
 
 # misc
 .DS_Store

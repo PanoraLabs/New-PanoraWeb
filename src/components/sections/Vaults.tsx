@@ -2,6 +2,8 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
+import GlareHover from "@/components/reactbits/GlareHover"
+import { Parallax } from "@/components/ui/parallax"
 
 const vaults = [
   {
@@ -15,7 +17,7 @@ const vaults = [
   {
     name: "Export RWA",
     title: "Traceable Exports",
-    desc: "Coffee, cacao, vanilla. Every batch minted as cNFT — full chain-of-custody from farm to foreign buyer. EUDR-ready by default.",
+    desc: "Coffee, cacao, vanilla. Every batch minted as a cNFT with full chain-of-custody from farm to foreign buyer. EUDR-ready by default.",
     returnVal: "TBA",
     duration: "6–9 months",
     image: "/coffee.jpg",
@@ -55,12 +57,27 @@ export function Vaults() {
             transition={{ duration: 0.5, delay: i * 0.1 }}
           >
             <div className="vault-mobile-image">
-              <Image
-                src={vault.image}
-                alt={vault.title}
-                fill
-                className="vault-image-photo"
-              />
+              <GlareHover
+                width="100%"
+                height="100%"
+                background="transparent"
+                borderRadius="0"
+                borderColor="transparent"
+                glareColor="#fdfcf9"
+                glareOpacity={0.35}
+                glareSize={220}
+                transitionDuration={900}
+                className="vault-glare"
+              >
+                <Parallax amount={18} scale={1.12}>
+                  <Image
+                    src={vault.image}
+                    alt={vault.title}
+                    fill
+                    className="vault-image-photo"
+                  />
+                </Parallax>
+              </GlareHover>
             </div>
             <div className="vault-mobile-info">
               <div className="vault-name">{vault.name}</div>

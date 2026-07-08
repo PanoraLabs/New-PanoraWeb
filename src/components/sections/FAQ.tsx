@@ -99,7 +99,7 @@ export function FAQ() {
   }
 
   return (
-    <section className="faq-section">
+    <section id="faq" className="faq-section">
       <motion.div
         className="faq-container"
         initial={{ opacity: 0, y: 40 }}

@@ -18,11 +18,11 @@ export default function NotFound() {
     >
       <h1
         style={{
-          fontFamily: "var(--serif)",
           fontSize: "clamp(3rem, 8vw, 6rem)",
           fontWeight: 400,
+          letterSpacing: "-0.03em",
           marginBottom: "0.5rem",
-          color: "var(--moss)",
+          color: "var(--olive-800)",
         }}
       >
         Coming Soon
@@ -43,8 +43,8 @@ export default function NotFound() {
         style={{
           display: "inline-block",
           padding: "0.75rem 2rem",
-          background: "var(--moss)",
-          color: "var(--white)",
+          background: "var(--olive-800)",
+          color: "var(--bone)",
           borderRadius: "9999px",
           textDecoration: "none",
           fontSize: "0.9375rem",

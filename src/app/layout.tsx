@@ -1,19 +1,11 @@
 import type { Metadata } from "next";
-import { DM_Sans, Instrument_Serif } from "next/font/google";
+import { Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  style: ["normal", "italic"],
+const hanken = Hanken_Grotesk({
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-instrument-serif",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  weight: ["300", "400", "500"],
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-hanken",
   display: "swap",
 });
 
@@ -29,12 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
-      <body
-        className={`${instrumentSerif.variable} ${dmSans.variable}`}
-      >
-        {children}
-      </body>
+    <html lang="en" className={hanken.variable}>
+      <body>{children}</body>
     </html>
   );
 }

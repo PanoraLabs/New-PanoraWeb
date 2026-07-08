@@ -2,28 +2,16 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import { SplitText } from "@/components/ui/split-text"
+import Magnet from "@/components/reactbits/Magnet"
 
 const fadeUp = (delay: number, ready: boolean) => ({
   initial: { opacity: 0, y: 24 },
   animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 },
-  transition: { delay, duration: 0.9, ease: "easeOut" as const },
-})
-
-const fadeBlurUp = (delay: number, ready: boolean) => ({
-  initial: { opacity: 0, y: 30, filter: "blur(8px)" },
-  animate: ready
-    ? { opacity: 1, y: 0, filter: "blur(0px)" }
-    : { opacity: 0, y: 30, filter: "blur(8px)" },
-  transition: { delay, duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const },
-})
-
-const scaleIn = (delay: number, ready: boolean) => ({
-  initial: { opacity: 0, scale: 0.92 },
-  animate: ready ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.92 },
-  transition: { delay, duration: 0.7, ease: "easeOut" as const },
+  transition: { delay, duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
 })
 
 const heroImages = ["/hero.jpg", "/hero1.jpg", "/hero2.jpg", "/hero3.jpg"]
@@ -31,6 +19,10 @@ const ROTATE_INTERVAL = 5000
 
 export function Hero({ ready }: { ready: boolean }) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const reduceMotion = useReducedMotion()
+  const { scrollY } = useScroll()
+  // photo drifts slower than the page: classic hero parallax
+  const mediaY = useTransform(scrollY, [0, 900], [0, 140])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -40,10 +32,54 @@ export function Hero({ ready }: { ready: boolean }) {
   }, [])
 
   return (
-    <>
-      {/* Fixed hero — image stays put; the next section slides over it */}
-      <section id="hero">
-        <div className="hero-parallax-layer">
+    <section id="hero" className="hero">
+      <h1 className="hero-title">
+        <SplitText text="Farm finance," animate={ready} delay={0.1} />
+        <br />
+        <span className="hero-title-accent">
+          <SplitText text="reinvented." animate={ready} delay={0.35} />
+        </span>
+      </h1>
+
+      <div className="hero-row">
+        <motion.p className="hero-description" {...fadeUp(0.55, ready)}>
+          Panora connects global capital to verified Indonesian farmers.
+          Season-long vaults, milestone-based payouts, and every harvest
+          traceable on Solana.
+        </motion.p>
+
+        <motion.div className="hero-buttons" {...fadeUp(0.65, ready)}>
+          <Magnet padding={60} magnetStrength={6}>
+            <Button variant="hero-cta" asChild>
+              <Link href="/app">
+                Explore vaults
+                <svg className="-mr-1" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </Button>
+          </Magnet>
+          <Button variant="hero-ghost" asChild>
+            <Link href="#how">See how it works</Link>
+          </Button>
+        </motion.div>
+      </div>
+
+      <motion.div
+        className="hero-media"
+        initial={{ opacity: 0, y: 40 }}
+        animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+        transition={{ delay: 0.75, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <motion.div
+          style={{
+            position: "absolute",
+            inset: 0,
+            y: reduceMotion ? 0 : mediaY,
+            scale: reduceMotion ? 1 : 1.15,
+          }}
+        >
           {heroImages.map((src, i) => (
             <motion.div
               key={src}
@@ -53,74 +89,16 @@ export function Hero({ ready }: { ready: boolean }) {
             >
               <Image
                 src={src}
-                alt=""
+                alt="Greenhouse rows on a Panora partner farm in West Java"
                 fill
                 priority={i === 0}
                 className="hero-bg-photo"
-                style={{ objectFit: "cover", objectPosition: "center" }}
               />
             </motion.div>
           ))}
-        </div>
-        <div className="hero-top-gradient" />
-        <div className="hero-overlay" />
-
-        {/* Bottom content bar — split left/right */}
-        <div className="hero-bottom">
-          {/* Left: large title */}
-          <div className="hero-left">
-            <h1 className="hero-title">
-              <motion.span className="inline-block" {...fadeBlurUp(0.15, ready)}>
-                Growing
-              </motion.span>
-              <br />
-              <motion.em className="inline-block" {...fadeBlurUp(0.3, ready)}>
-                real yields,
-              </motion.em>
-              <br />
-              <motion.span className="inline-block" {...fadeBlurUp(0.45, ready)}>
-                on-chain.
-              </motion.span>
-            </h1>
-          </div>
-
-          {/* Right: buttons + description */}
-          <div className="hero-right">
-            <div className="hero-right-content">
-              <div className="hero-buttons">
-                <motion.button className="hero-glass-btn" {...scaleIn(0.5, ready)} onClick={() => document.getElementById('how')?.scrollIntoView({ behavior: 'smooth' })}>
-                  <svg width="19" height="19" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="10" cy="10" r="9.7" stroke="currentColor" strokeWidth="0.56" />
-                    <path d="M12.59 9.91a.2.2 0 0 1 0 .32l-3.7 2.78a.2.2 0 0 1-.32-.16V7.29a.2.2 0 0 1 .32-.16l3.7 2.78Z" fill="currentColor" />
-                  </svg>
-                  See how it works
-                </motion.button>
-
-                <motion.div {...scaleIn(0.6, ready)}>
-                  <Button variant="hero-cta" asChild>
-                    <Link href="/app">
-                      Start Investing
-                      <svg className="-mr-1" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </Link>
-                  </Button>
-                </motion.div>
-              </div>
-
-              <motion.p className="hero-description" {...fadeUp(0.7, ready)}>
-                Panora Labs connects investors with verified Indonesian farmers
-                through blockchain-powered vaults — transparent, traceable, and
-                climate-resilient.
-              </motion.p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Spacer so content below starts after the viewport */}
-      <div className="hero-spacer" />
-    </>
+        </motion.div>
+        <div className="hero-media-caption">Partner farms. Subang, West Java</div>
+      </motion.div>
+    </section>
   )
 }

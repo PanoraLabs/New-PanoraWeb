@@ -1,24 +1,25 @@
 "use client"
 
 import { motion } from "framer-motion"
+import CountUp from "@/components/reactbits/CountUp"
 import { DONUT_C, DONUT_L1, DONUT_L2, DONUT_L3 } from "./constants"
 
 const legend = [
-  { color: "var(--leaf)", pct: "55%", label: "Farmers" },
-  { color: "var(--gold)", pct: "35%", label: "Investors" },
-  { color: "var(--stone)", pct: "10%", label: "Ecosystem" },
+  { color: "var(--harvest)", pct: 55, label: "Farmers" },
+  { color: "var(--olive-700)", pct: 35, label: "Investors" },
+  { color: "var(--stone)", pct: 10, label: "Ecosystem" },
 ] as const
 
 const checklist = [
   "Real-time oracle pricing based on IoT crop health data",
   "Price floor logic prevents predatory under-selling",
   "0.5% royalty on every trade goes to farmer emergency fund",
-  "Rights transfer is instant — farmers are never disrupted",
+  "Rights transfer is instant, and farmers are never disrupted",
 ] as const
 
 export function MarketEconomics() {
   return (
-    <section className="me-section">
+    <section id="economics" className="me-section">
       <div className="me-grid">
         <motion.div
           className="me-card"
@@ -53,16 +54,16 @@ export function MarketEconomics() {
           <div className="me-split-row">
             <div className="me-donut">
               <svg viewBox="0 0 200 200">
-                <circle cx="100" cy="100" r="80" fill="none" stroke="var(--mist)" strokeWidth="28" />
+                <circle cx="100" cy="100" r="80" fill="none" stroke="var(--bone-dim)" strokeWidth="28" />
                 <circle
                   cx="100" cy="100" r="80" fill="none"
-                  stroke="var(--leaf)" strokeWidth="28"
+                  stroke="var(--harvest)" strokeWidth="28"
                   strokeDasharray={`${DONUT_L1} ${DONUT_C - DONUT_L1}`}
                 />
                 <g transform="rotate(198 100 100)">
                   <circle
                     cx="100" cy="100" r="80" fill="none"
-                    stroke="var(--gold)" strokeWidth="28"
+                    stroke="var(--olive-700)" strokeWidth="28"
                     strokeDasharray={`${DONUT_L2} ${DONUT_C - DONUT_L2}`}
                   />
                 </g>
@@ -83,7 +84,9 @@ export function MarketEconomics() {
             <div className="me-pct-col">
               {legend.map(({ pct, label, color }) => (
                 <div key={label} className="me-pct-item">
-                  <div className="me-pct-val" style={{ color }}>{pct}</div>
+                  <div className="me-pct-val" style={{ color }}>
+                    <CountUp to={pct} duration={1.4} />%
+                  </div>
                   <div className="me-pct-label">{label}</div>
                 </div>
               ))}

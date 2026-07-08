@@ -11,15 +11,22 @@ const config: Config = {
     extend: {
       colors: {
         // ── Project palette (direct hex values) ──
-        forest: "#0d2b1a",
-        moss: "#1a5c38",
-        leaf: "#2e8b57",
-        sprout: "#5dbb7a",
-        mist: "#e8f5e9",
-        gold: "#c8961e",
-        cream: "#f7f4ee",
-        ink: "#0f1810",
-        stone: "#6b7b6e",
+        bone: "#f3eee4",
+        "bone-dim": "#e9e2d2",
+        olive: {
+          700: "#4d5f26",
+          800: "#404f1d",
+          950: "#1e2611",
+        },
+        sage: {
+          DEFAULT: "#8fa36c",
+          light: "#a9bf87",
+        },
+        stone: "#7c7f6a",
+        harvest: {
+          DEFAULT: "#d9822b",
+          deep: "#b5641e",
+        },
         // ── shadcn semantic tokens (CSS variable–backed) ──
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -61,8 +68,7 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        serif: ["var(--font-instrument-serif)", "Georgia", "serif"],
-        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-hanken)", "system-ui", "sans-serif"],
       },
     },
   },

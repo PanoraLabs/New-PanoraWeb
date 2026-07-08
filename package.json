@@ -4,9 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "dev:farm": "npm --prefix farm-app run dev",
-    "build:farm": "npm --prefix farm-app ci && npm --prefix farm-app run build && rm -rf public/app && cp -r farm-app/dist public/app",
-    "prebuild": "npm run build:farm",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint"
@@ -17,7 +14,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.8.0",
-    "motion": "^12.38.0",
+    "motion": "^12.42.2",
     "next": "16.2.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",

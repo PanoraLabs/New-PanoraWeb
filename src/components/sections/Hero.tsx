@@ -2,10 +2,11 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { SplitText } from "@/components/ui/split-text"
+import Magnet from "@/components/reactbits/Magnet"
 
 const fadeUp = (delay: number, ready: boolean) => ({
   initial: { opacity: 0, y: 24 },
@@ -18,6 +19,10 @@ const ROTATE_INTERVAL = 5000
 
 export function Hero({ ready }: { ready: boolean }) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const reduceMotion = useReducedMotion()
+  const { scrollY } = useScroll()
+  // photo drifts slower than the page: classic hero parallax
+  const mediaY = useTransform(scrollY, [0, 900], [0, 140])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -44,15 +49,17 @@ export function Hero({ ready }: { ready: boolean }) {
         </motion.p>
 
         <motion.div className="hero-buttons" {...fadeUp(0.65, ready)}>
-          <Button variant="hero-cta" asChild>
-            <Link href="/app">
-              Explore vaults
-              <svg className="-mr-1" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-          </Button>
+          <Magnet padding={60} magnetStrength={6}>
+            <Button variant="hero-cta" asChild>
+              <Link href="/app">
+                Explore vaults
+                <svg className="-mr-1" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </Button>
+          </Magnet>
           <Button variant="hero-ghost" asChild>
             <Link href="#how">See how it works</Link>
           </Button>
@@ -65,23 +72,32 @@ export function Hero({ ready }: { ready: boolean }) {
         animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
         transition={{ delay: 0.75, duration: 1, ease: [0.22, 1, 0.36, 1] }}
       >
-        {heroImages.map((src, i) => (
-          <motion.div
-            key={src}
-            animate={{ opacity: i === currentIndex ? 1 : 0 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            style={{ position: "absolute", inset: 0 }}
-          >
-            <Image
-              src={src}
-              alt="Greenhouse rows on a Panora partner farm in West Java"
-              fill
-              priority={i === 0}
-              className="hero-bg-photo"
-            />
-          </motion.div>
-        ))}
-        <div className="hero-media-caption">Subang, West Java. Partner greenhouse</div>
+        <motion.div
+          style={{
+            position: "absolute",
+            inset: 0,
+            y: reduceMotion ? 0 : mediaY,
+            scale: reduceMotion ? 1 : 1.15,
+          }}
+        >
+          {heroImages.map((src, i) => (
+            <motion.div
+              key={src}
+              animate={{ opacity: i === currentIndex ? 1 : 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              style={{ position: "absolute", inset: 0 }}
+            >
+              <Image
+                src={src}
+                alt="Greenhouse rows on a Panora partner farm in West Java"
+                fill
+                priority={i === 0}
+                className="hero-bg-photo"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+        <div className="hero-media-caption">Partner farms. Subang, West Java</div>
       </motion.div>
     </section>
   )

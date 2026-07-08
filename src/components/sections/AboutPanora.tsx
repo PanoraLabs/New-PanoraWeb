@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { SplitText } from "@/components/ui/split-text"
+import { ScrollReveal } from "@/components/reactbits/ScrollReveal"
 
 /**
  * Problem → answer narrative, farmminerals-style:
@@ -16,12 +17,12 @@ export function AboutPanora() {
           <div className="section-label">Why Panora</div>
 
           <h2 className="statement">
-            <SplitText text="Most farm capital never makes it to the field." />
+            <ScrollReveal text="Most farm capital never makes it to the field." />
           </h2>
 
           <div>
             <h2 className="statement statement--sage">
-              <SplitText text="Middlemen, paperwork, and predatory rates strip value before planting even starts." />
+              <ScrollReveal text="Middlemen, paperwork, and predatory rates strip value before planting even starts." />
             </h2>
             <p className="statement-note">
               Smallholder farmers grow most of Indonesia&apos;s food, yet banks
@@ -30,7 +31,7 @@ export function AboutPanora() {
           </div>
 
           <h2 className="statement">
-            <SplitText text="How much more could they grow if funding reached the soil?" />
+            <ScrollReveal text="How much more could they grow if funding reached the soil?" />
           </h2>
         </div>
       </section>
@@ -38,7 +39,7 @@ export function AboutPanora() {
       <section className="better-way">
         <div className="better-way-inner">
           <h2 className="better-way-title">
-            <SplitText text="We found a better way." />
+            <SplitText text="We found a" /> <em><SplitText text="better way." delay={0.3} /></em>
           </h2>
           <p className="better-way-text">
             <strong>Panora Vaults</strong> are per-season funding pools on

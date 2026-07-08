@@ -23,6 +23,10 @@ const config: Config = {
           light: "#a9bf87",
         },
         stone: "#7c7f6a",
+        harvest: {
+          DEFAULT: "#d9822b",
+          deep: "#b5641e",
+        },
         // ── shadcn semantic tokens (CSS variable–backed) ──
         background: "var(--background)",
         foreground: "var(--foreground)",

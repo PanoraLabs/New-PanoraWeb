@@ -26,14 +26,14 @@ const buttonVariants = cva(
           "bg-olive-800 text-bone rounded-full hover:bg-olive-950 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(30,38,17,0.2)]",
         nav:
           "bg-olive-800 text-bone rounded-full hover:bg-olive-950 hover:-translate-y-px",
-        // Olive pill on bone surfaces (hero, nav)
+        // Harvest pill: the one conversion action, same color everywhere
         "hero-cta":
-          "bg-olive-800 text-bone rounded-full hover:bg-olive-950 hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(30,38,17,0.12)] hover:shadow-[0_6px_24px_rgba(30,38,17,0.2)] font-medium gap-2",
+          "bg-harvest text-olive-950 rounded-full hover:bg-harvest-deep hover:text-bone hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(181,100,30,0.25)] hover:shadow-[0_6px_24px_rgba(181,100,30,0.35)] font-medium gap-2",
         "hero-ghost":
           "bg-transparent text-olive-950/75 border border-olive-950/25 rounded-full hover:border-olive-950/60 hover:text-olive-950",
-        // Bone pill on olive-drenched surfaces (final CTA)
+        // Harvest pill on olive-drenched surfaces (final CTA)
         "cta-bone":
-          "bg-bone text-olive-950 rounded-full hover:bg-white hover:-translate-y-0.5 font-medium gap-2",
+          "bg-harvest text-olive-950 rounded-full hover:bg-bone hover:-translate-y-0.5 font-medium gap-2",
         "cta-ghost-bone":
           "bg-transparent text-bone/75 border border-bone/30 rounded-full hover:border-bone/70 hover:text-bone",
       },

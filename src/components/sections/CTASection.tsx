@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { SplitText } from "@/components/ui/split-text"
+import Magnet from "@/components/reactbits/Magnet"
 
 export function CTASection() {
   return (
@@ -17,15 +18,17 @@ export function CTASection() {
           pick a crop, and watch your capital work in the field.
         </p>
         <div className="cta-final-buttons">
-          <Button variant="cta-bone" asChild>
-            <Link href="/app">
-              Explore vaults
-              <svg className="-mr-1" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-          </Button>
+          <Magnet padding={60} magnetStrength={6}>
+            <Button variant="cta-bone" asChild>
+              <Link href="/app">
+                Explore vaults
+                <svg className="-mr-1" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </Button>
+          </Magnet>
           <Button variant="cta-ghost-bone" asChild>
             <Link href="#faq">Read the FAQ</Link>
           </Button>

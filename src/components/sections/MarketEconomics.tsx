@@ -1,12 +1,13 @@
 "use client"
 
 import { motion } from "framer-motion"
+import CountUp from "@/components/reactbits/CountUp"
 import { DONUT_C, DONUT_L1, DONUT_L2, DONUT_L3 } from "./constants"
 
 const legend = [
-  { color: "var(--sage)", pct: "55%", label: "Farmers" },
-  { color: "var(--olive-700)", pct: "35%", label: "Investors" },
-  { color: "var(--stone)", pct: "10%", label: "Ecosystem" },
+  { color: "var(--harvest)", pct: 55, label: "Farmers" },
+  { color: "var(--olive-700)", pct: 35, label: "Investors" },
+  { color: "var(--stone)", pct: 10, label: "Ecosystem" },
 ] as const
 
 const checklist = [
@@ -56,7 +57,7 @@ export function MarketEconomics() {
                 <circle cx="100" cy="100" r="80" fill="none" stroke="var(--bone-dim)" strokeWidth="28" />
                 <circle
                   cx="100" cy="100" r="80" fill="none"
-                  stroke="var(--sage)" strokeWidth="28"
+                  stroke="var(--harvest)" strokeWidth="28"
                   strokeDasharray={`${DONUT_L1} ${DONUT_C - DONUT_L1}`}
                 />
                 <g transform="rotate(198 100 100)">
@@ -83,7 +84,9 @@ export function MarketEconomics() {
             <div className="me-pct-col">
               {legend.map(({ pct, label, color }) => (
                 <div key={label} className="me-pct-item">
-                  <div className="me-pct-val" style={{ color }}>{pct}</div>
+                  <div className="me-pct-val" style={{ color }}>
+                    <CountUp to={pct} duration={1.4} />%
+                  </div>
                   <div className="me-pct-label">{label}</div>
                 </div>
               ))}

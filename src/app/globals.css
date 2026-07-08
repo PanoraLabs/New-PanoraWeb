@@ -21,6 +21,9 @@
   --sage: #8fa36c;
   --sage-light: #a9bf87;
   --stone: #7c7f6a;
+  /* Harvest amber: action + emphasis accent (turmeric / palm sugar) */
+  --harvest: #d9822b;
+  --harvest-deep: #b5641e;
   --sans: var(--font-hanken), system-ui, sans-serif;
 
   /* ── shadcn semantic tokens ── */
@@ -98,7 +101,7 @@ body {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--sage);
+  background: var(--harvest);
   flex-shrink: 0;
 }
 
@@ -114,7 +117,7 @@ body {
 
 .section-title em {
   font-style: normal;
-  color: var(--sage);
+  color: var(--harvest-deep);
 }
 
 .section-sub {
@@ -241,7 +244,7 @@ nav.site-nav {
 }
 
 .hero-title-accent {
-  color: var(--sage);
+  color: var(--harvest-deep);
 }
 
 .hero-row {
@@ -313,7 +316,7 @@ nav.site-nav {
 }
 
 .statements .section-label::before {
-  background: var(--sage-light);
+  background: var(--harvest);
 }
 
 .statement {
@@ -359,7 +362,7 @@ nav.site-nav {
 
 .better-way-title em {
   font-style: normal;
-  color: var(--sage);
+  color: var(--harvest-deep);
 }
 
 .better-way-text {
@@ -721,7 +724,7 @@ nav.site-nav {
 
 .me-card-title em {
   font-style: normal;
-  color: var(--sage);
+  color: var(--harvest-deep);
 }
 
 .me-checklist {
@@ -816,63 +819,56 @@ nav.site-nav {
   margin-top: 4px;
 }
 
-/* ── PROOF / TRUST ── */
+/* ── PROOF / TRUST (dark ecosystem band) ── */
 .proof-section {
-  background: var(--bone);
-  padding: 32px clamp(20px, 4vw, 60px);
+  background: var(--olive-800);
+  padding: clamp(56px, 8vh, 88px) 0;
   overflow: hidden;
-  border-top: 1px solid rgba(30, 38, 17, 0.07);
-  border-bottom: 1px solid rgba(30, 38, 17, 0.07);
 }
 
-.proof-marquee-wrapper {
-  position: relative;
-}
-
-.proof-marquee-wrapper .marquee-track {
-  align-items: center;
-}
-
-.proof-marquee-wrapper::before,
-.proof-marquee-wrapper::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 120px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.proof-marquee-wrapper::before {
-  left: 0;
-  background: linear-gradient(to right, var(--bone), transparent);
-}
-
-.proof-marquee-wrapper::after {
-  right: 0;
-  background: linear-gradient(to left, var(--bone), transparent);
-}
-
-.proof-marquee {
-  --gap: 4rem;
-  --duration: 30s;
+.proof-label {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(243, 238, 228, 0.45);
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .proof-logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  height: 40px;
-  opacity: 0.55;
+  gap: 18px;
+  opacity: 0.85;
   transition: opacity 0.2s;
-  padding: 0 1.5rem;
-  filter: grayscale(1);
 }
 
 .proof-logo:hover {
   opacity: 1;
-  filter: none;
+}
+
+/* dark wordmark → bone, for the olive band; wordmarks carry more width,
+   so they sit lower than marks for equal visual weight */
+.proof-logo img.proof-logo-invert {
+  height: 30px;
+  filter: invert(1) brightness(0.96);
+}
+
+/* baked-background JPG renders as a rounded badge */
+.proof-logo img.proof-logo-badge {
+  height: 48px;
+  border-radius: 12px;
+}
+
+/* ── VAULT CARD GLARE (react-bits GlareHover overrides) ── */
+/* glare sweep must paint above the positioned next/image */
+.vault-glare::before {
+  z-index: 2;
+}
+
+.vault-glare:hover {
+  cursor: default;
 }
 
 /* ── FAQ ── */
@@ -1022,7 +1018,7 @@ nav.site-nav {
 }
 
 .cta-final .section-label::before {
-  background: var(--sage-light);
+  background: var(--harvest);
 }
 
 .cta-final-title {
@@ -1262,7 +1258,11 @@ footer {
   }
 
   .proof-section {
-    padding: 24px;
+    padding: 48px 0;
+  }
+
+  .proof-label {
+    margin-bottom: 28px;
   }
 }
 
@@ -1361,24 +1361,6 @@ footer {
   .section-sub {
     font-size: 15px;
     margin-bottom: 40px;
-  }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-100% - 3rem));
-  }
-}
-
-@keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(calc(-100% - 3rem));
   }
 }
 

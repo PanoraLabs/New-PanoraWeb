@@ -35,7 +35,7 @@ const logos = [
 export function Proof() {
   return (
     <section id="proof" className="proof-section">
-      <div className="proof-label">Powered by</div>
+      <div className="proof-label">Built on enterprise-grade infrastructure</div>
       <LogoLoop
         logos={logos}
         speed={60}

@@ -2,21 +2,21 @@ import Link from "next/link"
 
 const columns = [
   {
-    title: "Product",
+    title: "Platform",
     links: [
-      "Panora Vaults",
-      "Secondary Market",
-      "NFT Passport",
+      "Enterprise Console",
       "Field Agent App",
+      "API Documentation",
+      "Status Page",
     ],
   },
   {
-    title: "Company",
-    links: ["About", "Blog", "Careers", "Press"],
+    title: "Resources",
+    links: ["EUDR Compliance Guide", "Whitepaper", "Case Studies", "Blog"],
   },
   {
-    title: "Legal",
-    links: ["Terms of Service", "Privacy Policy", "Risk Disclosure", "Whitepaper"],
+    title: "Contact",
+    links: ["hello@panora.farm", "Jakarta, Indonesia", "Privacy Policy", "Terms of Service"],
   },
 ] as const
 
@@ -25,10 +25,10 @@ export function SiteFooter() {
     <footer>
       <div className="footer-top">
         <div className="footer-brand">
-          <div className="footer-brand-name">Panora Labs</div>
+          <div className="footer-brand-name">Panora</div>
           <p className="footer-brand-desc">
-            Climate-Smart RWA Agriculture Infrastructure. Building the financial
-            rails for Indonesia&apos;s farmers on Solana.
+            First-mile traceability and EUDR compliance infrastructure for
+            global commodity supply chains.
           </p>
         </div>
         <div className="footer-columns">
@@ -47,7 +47,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span className="footer-copy">© 2026 Panora Labs. All rights reserved.</span>
+        <span className="footer-copy">© 2026 Panora. All rights reserved.</span>
       </div>
     </footer>
   )

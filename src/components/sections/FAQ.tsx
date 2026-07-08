@@ -7,27 +7,32 @@ const faqItems = [
   {
     question: "What is Panora?",
     answer:
-      "Panora is a blockchain-based agricultural infrastructure protocol built on Solana that allows global investors to fund Indonesian farmers through transparent, programmable vaults. Every fund flow, milestone disbursement, and profit distribution is executed automatically on-chain via Waterfall Payment Logic.",
+      "Panora is first-mile traceability and EUDR compliance infrastructure for global commodity supply chains. It bridges smallholder farmers and global trading houses through immutable Digital Product Passports on Solana, so every batch is auditable from farm gate to port.",
   },
   {
-    question: "How do I start investing on Panora?",
+    question: "What does EUDR compliance actually require?",
     answer:
-      "Connect your Solana wallet (Phantom, Backpack, etc.), choose a vault based on your desired commodity and risk profile, deposit USDC into the vault, and you will automatically receive a Participation Token (PT) as proof of your investment position.",
+      "The EU Deforestation Regulation demands irrefutable evidence that commodities originate from non-deforested land. Panora captures GPS-tagged polygon coordinates at the point of harvest, encrypted and timestamped on-chain, creating audit trails that regulators cannot challenge.",
   },
   {
-    question: "What is the estimated return on investment?",
+    question: "Does my team need to understand blockchain?",
     answer:
-      "Returns vary by vault type: Greenhouse Produce (chili, tomato, shallot) 15-22%, Traceable Exports (coffee, cacao, vanilla) 18-28%, and Staple Crops (rice, corn) 8-14%. All returns are estimates from the 35% net profit investors receive after harvest sales.",
+      "No. Panora takes a Silent Web3 approach: field staff log in with email or Google via Web3Auth, headquarters uses enterprise SSO, and nobody ever sees a wallet address or signs a blockchain transaction. Your IT team gets immutability, your operations team gets simplicity.",
   },
   {
-    question: "Is my principal investment safe?",
+    question: "How does Panora fit into our existing systems?",
     answer:
-      "Panora implements several layers of protection: (1) Automatic parametric insurance based on oracles for extreme weather risk on open-field commodities, (2) Social collateral mechanisms within farmer groups, (3) Whitelisted off-takers to prevent side-selling, and (4) Emergency Insurance Fund from 2% of platform fees.",
+      "REST APIs and webhooks integrate with your current ERP or SAP stack, so no infrastructure overhaul is required. Panora runs on multi-region cloud infrastructure with a 99.9% uptime SLA, edge-optimized for low-connectivity field operations across Southeast Asia and Africa.",
   },
   {
-    question: "What is a Participation Token (PT) and Yield-NFT?",
+    question: "How is working capital protected in the field?",
     answer:
-      "A Participation Token (PT) is a digital proof of ownership automatically minted by the smart contract when you fund a vault. This token represents your right to 100% principal return plus 35% net profit share. PTs can be traded on Panora\u2019s secondary market.",
+      "Milestone-gated disbursement locks funds until verified delivery events occur on-chain. Capital deployed into remote supply chains stays protected from field-level leakage and misallocation, with a complete audit trail for every release.",
+  },
+  {
+    question: "Has this been proven in the field?",
+    answer:
+      "Panora placed Top 10 at the SEABW Hackathon (supported by AWS, selected from 200+ global registrants) and 4th at Indonesia's premier national campus blockchain competition with Superteam Indonesia. Our flagship pilot, the Sumatra South Coffee Corridor in Pagar Alam, covers the complete coffee supply chain from smallholder farms through collection points to export warehouses.",
   },
 ]
 

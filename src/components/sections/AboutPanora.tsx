@@ -12,26 +12,26 @@ import { ScrollReveal } from "@/components/reactbits/ScrollReveal"
 export function AboutPanora() {
   return (
     <>
-      <section id="about-panora" className="statements">
+      <section id="why" className="statements">
         <div className="statements-inner">
-          <div className="section-label">Why Panora</div>
+          <div className="section-label">The compliance imperative</div>
 
           <h2 className="statement">
-            <ScrollReveal text="Most farm capital never makes it to the field." />
+            <ScrollReveal text="EUDR deadlines are closing in on every commodity desk." />
           </h2>
 
           <div>
             <h2 className="statement statement--sage">
-              <ScrollReveal text="Middlemen, paperwork, and predatory rates strip value before planting even starts." />
+              <ScrollReveal text="Yet first-mile data is still paper receipts, spreadsheets, and claims nobody can verify." />
             </h2>
             <p className="statement-note">
-              Smallholder farmers grow most of Indonesia&apos;s food, yet banks
-              rarely fund a 90-day harvest cycle.
+              Supply chain opacity is no longer acceptable. The cost of
+              non-compliance far exceeds the cost of transformation.
             </p>
           </div>
 
           <h2 className="statement">
-            <ScrollReveal text="How much more could they grow if funding reached the soil?" />
+            <ScrollReveal text="What if every batch carried proof a regulator cannot challenge?" />
           </h2>
         </div>
       </section>
@@ -39,17 +39,18 @@ export function AboutPanora() {
       <section className="better-way">
         <div className="better-way-inner">
           <h2 className="better-way-title">
-            <SplitText text="We found a" /> <em><SplitText text="better way." delay={0.3} /></em>
+            <SplitText text="We make compliance" /> <em><SplitText text="provable." delay={0.3} /></em>
           </h2>
           <p className="better-way-text">
-            <strong>Panora Vaults</strong> are per-season funding pools on
-            Solana. Capital is released milestone by milestone as field agents
-            verify real work on real farms. When the harvest sells, the
-            smart contract splits the profit automatically. No middlemen. No
-            missing money.
+            <strong>Panora Digital Product Passports</strong> capture
+            GPS-tagged polygon coordinates at the point of harvest, encrypted
+            and timestamped on-chain. Every touchpoint from farm gate to
+            warehouse becomes auditable and tamper-proof, and milestone-gated
+            disbursement locks working capital until verified delivery events
+            occur. No black box. No challengeable claims.
           </p>
           <Link href="#how" className="text-btn">
-            See how it works
+            See the chain of custody
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
